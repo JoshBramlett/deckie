@@ -397,10 +397,9 @@ body {
 #deck-list {
 	margin: 0 14px 0 8px;
 	height: 476px;
-	width: 192px;
 	padding: 4px 0;
 	background: transparent;
-	overflow: scroll;
+	overflow-y: scroll;
 	border: none;
 	z-index: -1;
 }
@@ -684,12 +683,10 @@ body {
  
 #create-deck-user-list {
 	height: 540px;
-	width: 192px;
 	padding: 4px 0;
 	background: inherit;
-	overflow: scroll;
+	overflow-y: scroll;
 	border: none;
-	margin: 0 auto;
 }
 
 #create-deck-action-panel { 
@@ -737,7 +734,7 @@ body {
 	width: 30px;
 	text-align: center;
 	font-size: 24px;
-	line-height: 36px;
+	line-height: 32px;
 	font-weight: bold;
 }
 
@@ -751,8 +748,7 @@ body {
 	float: right;
 	width: 18px;
 	font-size: 20px;
-	line-height: initial;
-	padding-top: 8px;
+	line-height: 32px;
 }
 
 .create-deck-selected .count .glyphicon-star {
