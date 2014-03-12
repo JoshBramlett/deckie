@@ -7,3 +7,7 @@ assets/original
 
 # Ignore Mac specific files
 .DS_Store
+
+# Ignore the ZIP file generated for chrome
+# To generate the ZIP run git archive -o deckie.zip HEAD
+*.zip 
