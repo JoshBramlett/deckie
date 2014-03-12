@@ -1,0 +1,32 @@
+{
+	"manifest_version": 2,
+
+	"name": "Deckie",
+	"description": "Hearthstone deck manager.",
+	"version": "1.0.0.4944",
+	"author": "Josh Bramlett",
+	"icons": { 
+		"16": "assets/icon16.png",
+        "48": "assets/icon48.png",
+		"128": "assets/icon128.png" 
+	},
+	
+	"permissions": ["notifications"],
+	"background": {
+    	"scripts": ["js/background.js"],
+    	"persistent": false
+	},
+	
+  	"browser_action": {
+	  	"default_icon": {
+		  	"19": "assets/icon19.png",
+		  	"38": "assets/icon38.png"
+		},
+		"default_title": "Deckie",
+		"default_popup": "deckie.html"
+	},
+	
+	"sandbox": {
+    	"pages": [ "iframe.html" ]
+	}
+}

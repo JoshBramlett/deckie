@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Deckie Hearthstone Deck Manager</title>
+		<link href="/lib/kendoui/styles/kendo.common-bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="/lib/kendoui/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="/lib/kendoui/styles/kendo.bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="/lib/mbootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="/styles/deckie.css" rel="stylesheet" type="text/css">
+	 </head>
+	 <body>
+	 	<div id="main-content">
+	 		<div id="main-logo"></div>
+	 	</div>
+	 	<div id="lb-card-search" class="light-box">
+	 		<div class="lb-container">
+	 			<div id="ac-card-search-container">
+	 				<input id="ac-card-search" type="search" style="width:220px;" />
+	 			</div>
+		 		<div id="card-search-stats-title" class="spell-label">
+	 				<span>C</span>
+	 				<span>a</span>
+	 				<span>r</span>
+	 				<span>d</span>
+	 				<span>&nbsp;</span>
+	 				<span>S</span>
+	 				<span>t</span>
+	 				<span>a</span>
+	 				<span>t</span>
+	 				<span>s</span>
+	 			</div>
+		 		<div id="card-search-stats">
+		 			<p id="card-search-placeholder">The search shall bring results!</p>
+		 			<div id="card-search-stat-group-class">
+		 				<span class="stat-label">Class:</span>
+			 			<span id="card-search-stat-class" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-quality">
+		 				<span class="stat-label">Quality:</span>
+			 			<span id="card-search-stat-quality" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-set">
+		 				<span class="stat-label">Set:</span>
+			 			<span id="card-search-stat-set" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-race">
+		 				<span class="stat-label">Minion Type:</span>
+			 			<span id="card-search-stat-race" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-unlocked">
+		 				<span class="stat-label">Unlocked:</span>
+			 			<span id="card-search-stat-unlocked" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-craft">
+		 				<span class="stat-label">Craft:</span>
+			 			<span id="card-search-stat-craft" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-de">
+		 				<span class="stat-label">Disenchant:</span>
+			 			<span id="card-search-stat-de" class="stat-value"></span>
+		 			</div>
+		 			<div id="card-search-stat-group-artist">
+		 				<span class="stat-label">Artist:</span>
+			 			<span id="card-search-stat-artist" class="stat-value"></span>
+		 			</div>
+		 		</div>
+		 		<div id="card-search-image-container">
+		 			<div id="card-search-image-border"></div>
+		 			<div id="card-search-image-bg">
+		 				<div id="card-search-image"></div>
+		 			</div>
+		 		</div>
+	 		</div>
+	 	</div>
+	 	<div id="lb-create-deck-choose-hero" class="light-box">
+	 		<div class="victorian-label">
+	 			<p>Choose Your Hero</p>
+	 		</div>
+	 		<div>
+		 		<a class="btn-choose-hero choose-hero-1" data-hero="1" href="#"></a>
+		 		<a class="btn-choose-hero choose-hero-2" data-hero="2" href="#"></a>
+	 		</div>
+	 		<div>
+	 			<a class="btn-choose-hero choose-hero-3" data-hero="3" href="#"></a>
+	 			<a class="btn-choose-hero choose-hero-4" data-hero="4" href="#"></a>
+	 		</div>
+	 		<div>
+	 			<a class="btn-choose-hero choose-hero-5" data-hero="5" href="#"></a>
+	 			<a class="btn-choose-hero choose-hero-6" data-hero="6" href="#"></a>
+	 		</div>
+	 		<div>
+	 			<a class="btn-choose-hero choose-hero-7" data-hero="7" href="#"></a>
+	 			<a class="btn-choose-hero choose-hero-8" data-hero="8" href="#"></a>
+	 		</div>
+	 		<div>
+	 			<a class="btn-choose-hero choose-hero-9" data-hero="9" href="#" style="display:block;margin:0 auto;"></a>
+	 		</div>
+	 	</div>
+	 	<div id="lb-create-deck" class="light-box large">
+	 		<div class="lb-container">
+		 		<div id="create-deck-filter-panel">
+		 			<div id="selected-hero"></div>
+			 		<input id="create-deck-name" name="name" type="text" class="k-textbox" maxlength="63" tabindex="1" style="width:181px;margin:0 9px" placeholder="Deck Name" autofocus />
+			 		<div id="create-deck-filters">
+			 			<div class="victorian-label">
+				 			<p>Filters</p>
+				 		</div>
+				 		<label style="color:#fff;"><input id="create-deck-neutral-filter" type="checkbox" checked="checked" style="margin-right: 6px;" />Show Neutral</label>
+				 		<input id="create-deck-text-filter" type="text" class="k-textbox" maxlength="63" tabindex="2" style="width:181px;margin-bottom:8px;" placeholder="Filter by Name" />
+				 		<input id="create-deck-quality-filter" tabindex="3" style="width:181px;margin-bottom:8px;" />
+				 		<input id="create-deck-type-filter" tabindex="4" style="width:181px;margin-bottom:8px;" />
+				 		<input id="create-deck-race-filter" tabindex="5" style="width:181px;margin-bottom:8px;" />
+				 		<input id="create-deck-mechanic-filter" tabindex="6" style="width:181px;margin-bottom:8px;" />
+				 		<div class="create-deck-filter-stat">
+				 			<span class="stat-icon ico-cost"></span>
+				 			<input id="create-deck-cost-operator" class="ddl-gtlt" style="width:60px;float:left;margin-right:8px;" />
+				 			<input id="create-deck-cost-filter" data-filter="cost" type="text" class="k-textbox" maxlength="2" style="width:60px;float:left;" />
+				 		</div>
+				 		<div class="create-deck-filter-stat">
+				 			<span class="stat-icon ico-attack"></span>
+				 			<input id="create-deck-attack-operator" class="ddl-gtlt" style="width:60px;float:left;margin-right:8px;" />
+				 			<input id="create-deck-attack-filter" data-filter="attack" type="text" class="k-textbox" maxlength="2" style="width:60px;float:left;" />
+				 		</div>
+				 		<div class="create-deck-filter-stat">
+				 			<span class="stat-icon ico-health"></span>
+				 			<input id="create-deck-health-operator" class="ddl-gtlt" style="width:60px;float:left;margin-right:8px;" />
+				 			<input id="create-deck-health-filter" data-filter="health" type="text" class="k-textbox" maxlength="2" style="width:60px;float:left;" />
+				 		</div>
+			 		</div>
+		 		</div>
+		 		<div id="create-deck-global-list-panel">
+					<div id="create-deck-err" class="alert alert-danger"></div>
+		 			<div id="create-deck-global-list"></div>
+		 		</div>
+		 		<div id="create-deck-user-list-panel">
+		 			<div id="create-deck-user-list"></div>
+		 			<div id="create-deck-action-panel">
+		 				<span style="width: 90px;vertical-align:middle;height:32px;"><span id="create-deck-count">0</span>/30<div>Cards</div></span>
+		 				<button id="btn-create-deck" type="button" class="btn btn-success">Save Deck</button>
+		 			</div>
+		 		</div>
+	 		</div>
+	 	</div>
+	 	<div id="lb-select-deck" class="light-box">
+	 		<div id="edit-delete-deck-err" class="alert alert-danger"></div>
+	 		<div id="select-deck-action-panel">
+		 		<div class="victorian-label">
+		 			<p>My Saved Decks</p>
+		 		</div>
+		 		<div id="ddl-decks" style="width:200px;margin:0 30px;"></div>
+	 		</div>
+	 		<div id="deck-list-container">
+		 		<div id="deck-list"></div>
+		 		<button id="btn-edit-deck" type="button" class="btn btn-primary" title="Edit" style="margin: 6px 0;"><span class="glyphicon glyphicon-pencil"></span></button>
+		 		<button id="btn-delete-deck" type="button" class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
+	 		</div>
+	 	</div>
+	 	<div id="lb-about" class="light-box">
+	 		<div id="deckie-info">
+	 			<h1>Deckie</h1>
+	 			<p style="text-align:center;">All cards updated for Hearthstone patch 1.0.0.4944</p>
+	 		</div>
+	 		<div id="qna">
+		 		<p style="text-align:center;">Well Met!  I hope you find this humble little Chrome extension useful.</p>
+		 		<ul>
+		 			<li class="q">
+		 				<p>Q:&nbsp;&nbsp;I think I found a bug...</p>
+		 			</li>
+		 			<li class="a">
+		 				<p>A:&nbsp;&nbsp;Tweet me here:</p>
+		 				<div id="custom-tweet-button">
+			 				<a href="https://twitter.com/JoshBramlett" target="_blank">Tweet to @JoshBramlett</a>
+			 			</div>
+		 			</li>
+		 			<li class="q">
+		 				<p>Q:&nbsp;&nbsp;Is it true that all your error messages are Big Lebowski quotes?</p>
+		 			</li>
+		 			<li class="a">
+		 				<p>A:&nbsp;&nbsp;Dude.</p>
+		 			</li>
+		 			<li class="q">
+		 				<p>Q:&nbsp;&nbsp;Far out, man.  Which quotes?</p>
+		 			</li>
+		 			<li class="a">
+		 				<p>A:&nbsp;&nbsp;I'll never tell, but feel free to check the source code.</p>
+		 				<iframe src="http://ghbtns.com/github-btn.html?user=JoshBramlett&repo=deckie&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20" style="margin-top:8px"></iframe>
+		 			</li>
+		 			<li class="q">
+		 				<p>Q:&nbsp;&nbsp;Can I buy you a beer?</p>
+		 			</li>
+		 			<li class="a">
+		 				<p>A:&nbsp;&nbsp;Please do!</p>
+		 				<div id="btc-address">
+		 					<div id="btc-address-copy">1MmKaDbzyaCNYdYQXGyCgy2AFfp4KiKBb5</div>
+<!-- 		 					<textarea id="btc-address-text">1MmKaDbzyaCNYdYQXGyCgy2AFfp4KiKBb5</textarea> -->
+		 				</div>
+		 			</li>
+		 		</ul>
+	 		</div>
+	 		<div id="disclaimer">
+	 			<p style="margin-bottom:5px;">Hearthstone&trade; is a registered trademark of Blizzard Entertainment, Inc.</p>
+	 			<p>Deckie is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Activision Blizzard or any of it's subsidiaries.  In fact, most of the images used in this application are simply poorly done photoshop alterations of the original artwork.</p>
+	 		</div>
+	 	</div>
+	 	<nav id="global-nav">
+	 		<a id="btn-nav-card-search" class="glyph-button" data-toggle="tooltip" data-placement="right" title="Quick Card Search" href="#"><span class="glyphicon glyphicon-search"></span></a>
+	 		<a id="btn-nav-select-deck" class="glyph-button" data-toggle="tooltip" data-placement="right" title="My Decks" href="#"><span class="glyphicon glyphicon-list-alt"></span></a>
+	 		<a id="btn-nav-create-deck" class="glyph-button" data-toggle="tooltip" data-placement="right" title="Create New Deck" href="#"><span class="glyphicon glyphicon-plus"></span></a>
+	 		<a id="btn-nav-about" class="glyph-button" data-toggle="tooltip" data-placement="right" title="About Deckie" href="#"><span class="glyphicon glyphicon-heart"></span></a>
+	 	</nav>
+	 	<script src="/lib/jquery.min.js"></script>
+	 	<script src="/lib/mbootstrap/js/bootstrap.min.js"></script>
+	 	<script src="/lib/kendoui/js/kendo.web.min.js"></script>
+	 	<script src="/js/deckie.js"></script>
+	 	<script>
+	 		// the panel currently displayed (used so we can hide it)
+	 		var activePanel = null;
+	 		
+	 		// variable holding the deck filter
+	 		var deckFilter = null;
+
+	 		var proxy = {};
+	 		window.addEventListener('message', function(e) { 
+
+	 			switch (e.data.message) {	 			
+	 				case 'init':
+	 				
+	 					// store the proxy data so we know who to call
+	 					proxy.origin = e.origin;
+	 					proxy.source = e.source;
+	 						 					
+	 					// ** initialize the view data ** //
+	 					
+	 					 // card sets
+	 					dsCardSearch.data(e.data.data.snapshot.cards.list);
+	 					dsCardFilterable.data(e.data.data.snapshot.cards.list);
+	 					
+	 					// card attributes
+	 					dsCardQualities.data(e.data.data.snapshot.cards.qualities);
+	 					dsCardTypes.data(e.data.data.snapshot.cards.types);
+	 					dsCardRaces.data(e.data.data.snapshot.cards.races);	 
+	 					dsCardSets.data(e.data.data.snapshot.cards.sets);	 
+	 					
+	 					// other
+	 					dsArtists.data(e.data.data.snapshot.artists);
+	 					dsClasses.data(e.data.data.snapshot.classes);
+	 									
+	 					// user decks	
+	 					dsDecks.data(e.data.data.snapshot.decks);
+	 					
+	 					break;
+					case "create-deck": 
+					case "update-deck": 
+
+						if (e.data.data.error === undefined) {
+							dsDecks.data(e.data.data.decks);
+						
+							var panel = $("#lb-select-deck");
+							$(activePanel).slideToggleH(function() {
+			 					// need to send a message to the proxy to resize the iframe
+			 					proxy.talk("iframe-width", 300);
+			 					
+				 				$(panel).slideToggleH();
+				 				activePanel = panel;
+				 				
+				 				$("#ddl-decks").data("kendoDropDownList").search(e.data.data.created);
+								$("#deck-list-container").show();
+			 				});
+			
+						} else {
+							$("#create-deck-err").html("<p><strong>No funny shtuff.</strong></p><p>" + e.data.data.error + "</p>").showAndFade();
+							return;
+						}
+						
+						break;
+					case "delete-deck": 
+						if (e.data.data.error === undefined) {
+							dsDecks.data(e.data.data.decks);
+							$("#ddl-decks").data("kendoDropDownList").select(0);
+							$("#deck-list-container").hide();
+						} else {
+							$("#edit-delete-deck-err").html("<p><strong>Uh oh.</strong></p><p>" + e.data.data.error + "</p>").showAndFade();
+							return;
+						}
+						
+						break;
+				}
+		  	});
+		  	
+		  	// method for sending messages to the proxy
+		  	proxy.talk = function (message, data){
+			  	var data = data || {};
+			  	proxy.source.postMessage({
+					message	: message,
+					data	: data
+				}, proxy.origin);
+			};
+
+	 		$(document).ready(function() { 
+	 		
+	 			/****************************************************
+				 *
+				 *                     NAV PANEL
+				 *
+				 ****************************************************/
+
+		 		// init bootstrap tooltips (must be done via JS)
+		 		$("[data-toggle='tooltip']").tooltip();
+
+	 			// display the select deck light-box
+	 			$("#btn-nav-card-search").click(function(e) {
+	 				var panel = $("#lb-card-search");
+	 				if (!activePanel) {
+		 				$(panel).slideToggleH();
+		 				activePanel = panel;
+	 				} else if (panel.get(0) != activePanel.get(0)) {
+		 				$(activePanel).slideToggleH(function() {
+		 					// need to send a message to the proxy to resize the iframe
+		 					proxy.talk("iframe-width", 300);
+		 				
+			 				$(panel).slideToggleH();
+			 				activePanel = panel;
+		 				});
+	 				}
+				});
+	 		
+	 			// display the select deck light-box
+	 			$("#btn-nav-select-deck").click(function(e) {
+	 				
+	 				$("#ddl-decks").data("kendoDropDownList").select(0);
+	 				$("#deck-list-container").hide();
+	 				dsCardSelected.cleanDeck();
+			    	if (dsCardFilterable.filter() != undefined) {
+				    	dsCardFilterable.filter({});
+			    	}
+	 				
+	 				var panel = $("#lb-select-deck");
+	 				if (!activePanel) {
+		 				$(panel).slideToggleH();
+		 				activePanel = panel;
+	 				} else if (panel.get(0) != activePanel.get(0)) {
+		 				$(activePanel).slideToggleH(function() {
+		 					// need to send a message to the proxy to resize the iframe
+		 					proxy.talk("iframe-width", 300);
+		 					
+			 				$(panel).slideToggleH();
+			 				activePanel = panel;
+		 				});
+	 				}
+				});
+
+				// display the create deck light-box
+	 			$("#btn-nav-create-deck").click(function(e) {	 			
+	 				// choose hero panel
+	 				var panel = $("#lb-create-deck-choose-hero");
+	 				if (!activePanel) {
+		 				$(panel).slideToggleH();
+		 				activePanel = panel;
+	 				} else if (panel.get(0) != activePanel.get(0)) {
+		 				$(activePanel).slideToggleH(function() {
+		 					// need to send a message to the proxy to resize the iframe
+		 					proxy.talk("iframe-width", 300);
+
+			 				$(panel).slideToggleH();
+			 				activePanel = panel;
+		 				});
+	 				}
+				});
+				
+				// display the about light-box
+	 			$("#btn-nav-about").click(function(e) {	 			
+	 				var panel = $("#lb-about");
+	 				if (!activePanel) {
+		 				$(panel).slideToggleH();
+		 				activePanel = panel;
+	 				} else if (panel.get(0) != activePanel.get(0)) {
+		 				$(activePanel).slideToggleH(function() {
+		 					// need to send a message to the proxy to resize the iframe
+		 					proxy.talk("iframe-width", 300);
+
+			 				$(panel).slideToggleH();
+			 				activePanel = panel;
+		 				});
+	 				}
+				});
+				
+				/****************************************************
+				 *
+				 *                 CARD SEARCH PANEL
+				 *
+				 ****************************************************/
+				
+				$("#ac-card-search").kendoAutoComplete({
+                    dataSource: dsCardSearch,
+                    dataTextField: "name",
+                    filter: "contains",
+                    placeholder: "Search cards...",
+                    minLength: 3,
+                    template: kendo.template($("#ktmpl-ac-cards").text(), { useWithBlock:false }),
+                    dataBound: function(e) {
+                    	if (this.dataSource.total() == 1) {
+							// only one match - fill in the name & close the ac
+							var item = this.dataSource.view()[0];
+                    		this.value(item.name);
+                    		this.close();
+                    		
+                    		displayCardSearchStats(item);
+                    	}
+                    },
+                    select: function(e) {
+	                    displayCardSearchStats(this.dataItem(e.item.index()));
+                    }
+                });
+                
+                /****************************************************
+				 *
+				 *                 SELECT DECK PANEL
+				 *
+				 ****************************************************/
+                
+                $("#ddl-decks").kendoDropDownList({
+					autoBind: false,
+				    dataSource: dsDecks,
+				    dataTextField: "name",
+				    dataValueField: "uid",
+				    optionLabel: "< Select >",
+				    template: kendo.template($("#ktmpl-ac-cards").text(), { useWithBlock:false }),
+				    select: function(e) {
+				    	// remove filter from the search DS so we can build our selected 
+				    	dsCardSelected.cleanDeck();
+				    	if (dsCardFilterable.filter() != undefined) {
+					    	dsCardFilterable.filter({});
+				    	}
+				    	
+				    	if (e.item.index() == 0) {
+					    	$("#deck-list-container").hide();
+				    	} else {
+					    	var deck = this.dataItem(e.item.index());
+					    	for (var i = 0; i < deck.cards.length; ++i) {
+					    		var card = dsCardFilterable.get(deck.cards[i].id);
+	
+								for (var j = 0; j < deck.cards[i].count; ++j) {
+									dsCardSelected.addCard(card);
+								}
+					    	}
+					    	
+					    	$("#deck-list-container").show();
+				    	}
+				    }
+				});
+				
+				$("#deck-list").kendoListView({
+	                dataSource: dsCardSelected,
+	                template: kendo.template($("#ktmpl-deck-list").text(), { useWithBlock:false })
+	            });
+	            
+	            $("#btn-edit-deck").click(function(e) {
+		            // reset the UI
+					resetCreateDeckUI();
+					
+					// set the card filter by selected class
+					var uid = $("#ddl-decks").data("kendoDropDownList").value();
+					var heroClassId = parseInt(dsDecks.getByUid(uid).classid,10);
+					deckFilter = new DeckFilter(heroClassId); 
+					dsCardFilterable.filter(deckFilter.getFilter());
+					
+					// set the hero icon in the create deck panel
+					$("#selected-hero").removeClass().addClass("choose-hero-" + heroClassId);
+					$("#create-deck-name").val(dsDecks.getByUid(uid).name);
+					$("#btn-create-deck").data("update", true);
+					$("#btn-create-deck").data("oldname", dsDecks.getByUid(uid).name);
+					
+					// display the panel
+					var panel = $("#lb-create-deck");
+					$(activePanel).slideToggleH(function() {
+	 					// need to send a message to the proxy to resize the iframe
+	 					proxy.talk("iframe-width", 800);
+
+		 				$(panel).slideToggleH();
+		 				activePanel = panel;
+	 				});	
+	            });
+	            
+	            $("#btn-delete-deck").click(function(e) {
+	            	var uid = $("#ddl-decks").data("kendoDropDownList").value();
+					proxy.talk("delete-deck", dsDecks.getByUid(uid).name);
+	            });
+				
+				/****************************************************
+				 *
+				 *                 CHOOSE HERO PANEL
+				 *
+				 ****************************************************/
+				
+				$(".btn-choose-hero").click(function(e) {
+					// reset the UI
+					resetCreateDeckUI();
+					
+					// reset selected DS
+					dsCardSelected.cleanDeck();
+					$("#create-deck-count").text("0");
+										
+					// set the card filter by selected class
+					var heroClassId = parseInt(e.target.dataset.hero,10);
+					deckFilter = new DeckFilter(heroClassId); 
+					dsCardFilterable.filter(deckFilter.getFilter());
+					
+					// set the hero icon in the create deck panel
+					$("#selected-hero").removeClass().addClass("choose-hero-" + heroClassId);
+					$("#btn-create-deck").data("update", false);
+					$("#btn-create-deck").data("oldname", null);
+					
+					// display the panel
+					var panel = $("#lb-create-deck");
+					$(activePanel).slideToggleH(function() {
+	 					// need to send a message to the proxy to resize the iframe
+	 					proxy.talk("iframe-width", 800);
+
+		 				$(panel).slideToggleH();
+		 				activePanel = panel;
+	 				});				
+				});
+				
+				/****************************************************
+				 *
+				 *                CREATE DECK: PANEL
+				 *
+				 ****************************************************/
+
+				$("#btn-create-deck").click(function(e) {		
+					if (dsCardSelected.data().length == 0) {
+						$("#create-deck-err").html("<p><strong>Well. I guess we can close the file on that one.</strong></p><p>You have no cards in your deck.</p>").showAndFade();
+						return;
+					}
+					
+					var classid = deckFilter.getClassId();
+					var name = $("#create-deck-name").val();
+					if (name.length === 0) {
+						name = "Custom " + dsClasses.get(classid).name;
+					}
+					
+					var isUpdate = $("#btn-create-deck").data("update");
+					if (isUpdate) {
+						var oldName = $("#btn-create-deck").data("oldname");
+						
+						var deck = {
+							old: oldName,
+							name: name,
+							classid: classid,
+							cards: dsCardSelected.serialize()
+						};
+						
+						proxy.talk("update-deck", deck);
+						
+					} else {
+						var deck = {
+							name: name,
+							classid: classid,
+							cards: dsCardSelected.serialize()
+						};
+						
+						proxy.talk("create-deck", deck);
+					}
+				});
+				
+				$("#create-deck-global-list").kendoListView({
+	                dataSource: dsCardFilterable,
+	                template: kendo.template($("#ktmpl-create-deck-cards").text(), { useWithBlock:false })
+	            });
+
+			    $("#create-deck-user-list").kendoListView({
+	                dataSource: dsCardSelected,
+	                template: kendo.template($("#ktmpl-selected-cards").text(), { useWithBlock:false })
+	            });
+	            
+	            $("#create-deck-global-list").kendoTooltip({
+                    filter: ".magnify",
+                    content: kendo.template($("#ktmpl-magnify-card").text(), { useWithBlock:false }),
+                    width: 200,
+                    height: 303,
+                    callout: false,
+                    position: "right"
+                });
+	            
+	            /****************************************************
+				 *
+				 *               CREATE DECK: FILTERS
+				 *
+				 ****************************************************/
+	            
+	            $("#create-deck-neutral-filter").change(function(e) {				
+					dsCardFilterable.filter(deckFilter.showNeutral(this.checked));
+				});
+	            
+	            $("#create-deck-text-filter").userChange(function(e) { 
+			    	dsCardFilterable.filter(deckFilter.filterName(this.value));
+			    	
+			    	$("#create-deck-text-filter").removeClass('filter-set');
+			    	if (this.value !== "") {
+				    	$("#create-deck-text-filter").addClass('filter-set');
+			    	}
+			    });
+
+				$("#create-deck-quality-filter").kendoDropDownList({
+					autoBind: false,
+				    dataSource: dsCardQualities,
+				    dataTextField: "name",
+				    dataValueField: "id",
+				    optionLabel: "< Quality >",
+				    select: function(e) {
+				    	var dataItem = this.dataItem(e.item.index());
+					    var id = (dataItem.id === parseInt(dataItem.id)) ? dataItem.id : null;					    
+					    dsCardFilterable.filter(deckFilter.filterQuality(id));
+
+					    $("#create-deck-quality-filter").siblings('.k-dropdown-wrap').removeClass('filter-set');
+					    if (id) {
+						    $("#create-deck-quality-filter").siblings('.k-dropdown-wrap').addClass('filter-set');
+					    }
+				    }
+				});
+				
+				$("#create-deck-type-filter").kendoDropDownList({
+					autoBind: false,
+				    dataSource: dsCardTypes,
+				    dataTextField: "name",
+				    dataValueField: "id",
+				    optionLabel: "< Card Type >",
+				    select: function(e) {
+				    	var dataItem = this.dataItem(e.item.index());
+					    var id = (dataItem.id === parseInt(dataItem.id)) ? dataItem.id : null;					    
+					    dsCardFilterable.filter(deckFilter.filterType(id));
+					    
+					    $("#create-deck-type-filter").siblings('.k-dropdown-wrap').removeClass('filter-set');
+					    if (id) {
+						    $("#create-deck-type-filter").siblings('.k-dropdown-wrap').addClass('filter-set');
+					    }
+				    }
+				});
+				
+				$("#create-deck-race-filter").kendoDropDownList({
+					autoBind: false,
+				    dataSource: dsCardRaces,
+				    dataTextField: "name",
+				    dataValueField: "id",
+				    optionLabel: "< Minion Type >",
+				    select: function(e) {
+				    	var dataItem = this.dataItem(e.item.index());
+					    var id = (dataItem.id === parseInt(dataItem.id)) ? dataItem.id : null;				    
+					    dsCardFilterable.filter(deckFilter.filterRace(id));
+					    
+					    $("#create-deck-race-filter").siblings('.k-dropdown-wrap').removeClass('filter-set');
+					    if (id) {
+						    $("#create-deck-race-filter").siblings('.k-dropdown-wrap').addClass('filter-set');
+					    }
+				    }
+				});
+				
+				$("#create-deck-mechanic-filter").kendoDropDownList({
+				    dataSource: [
+				    	{ id: "battlecry", name: "Battlecry" },
+				    	{ id: "charge", name: "Charge" },
+				    	{ id: "choose_one", name: "Choose One" },
+				    	{ id: "combo", name: "Combo" },
+				    	{ id: "counter", name: "Counter" },
+				    	{ id: "deathrattle", name: "Deathrattle" },
+				    	{ id: "divine_shield", name: "Divine Shield" },
+				    	{ id: "enrage", name: "Enrage" },
+				    	{ id: "freeze", name: "Freeze" },
+				    	{ id: "immune", name: "Immune" },
+				    	{ id: "overload", name: "Overload" },
+				    	{ id: "secret", name: "Secret" },
+				    	{ id: "silence", name: "Silence" },
+				    	{ id: "spell_damage", name: "Spell Damage" },
+				    	{ id: "stealth", name: "Stealth" },
+				    	{ id: "taunt", name: "Taunt" },
+				    	{ id: "windfury", name: "Windfury" }
+				    ],
+				    dataTextField: "name",
+				    dataValueField: "id",
+				    optionLabel: "< Mechanic >",
+				    select: function(e) {
+				    	var dataItem = this.dataItem(e.item.index());
+				    	var id = (dataItem.id !== "") ? dataItem.id : null;	
+				    	dsCardFilterable.filter(deckFilter.filterMechanic(id));
+				    	
+				    	$("#create-deck-mechanic-filter").siblings('.k-dropdown-wrap').removeClass('filter-set');
+					    if (id) {
+						    $("#create-deck-mechanic-filter").siblings('.k-dropdown-wrap').addClass('filter-set');
+					    }
+				    }
+				});
+				
+				$(".ddl-gtlt").kendoDropDownList({
+				    dataSource: [
+				    	{ id: "gt", name: ">" },
+				    	{ id: "gte", name: ">=" },
+				    	{ id: "eq", name: "=" },
+				    	{ id: "lte", name: "<=" },
+				    	{ id: "lt", name: "<" }
+				    ],
+				    dataTextField: "name",
+				    dataValueField: "id",
+				    template: kendo.template("#= data.name #", { useWithBlock:false }),
+				    select: function(e) {
+				    	var inputBox = $(e.sender.element[0]).closest(".create-deck-filter-stat").children(".k-textbox");
+				    	var filter = inputBox[0].dataset.filter;
+				    	var value = (!isNaN(parseInt(inputBox.val(),10))) ? parseInt(inputBox.val()) : null;
+				    	
+				    	if (value) {
+				    		var dataItem = this.dataItem(e.item.index());
+				    	
+					    	if (filter == "cost") {
+						    	dsCardFilterable.filter(deckFilter.filterCost(value, dataItem.id));
+					    	} else if (filter == "attack") {
+						    	dsCardFilterable.filter(deckFilter.filterAttack(value, dataItem.id));
+					    	} else if (filter == "health") {
+						    	dsCardFilterable.filter(deckFilter.filterHealth(value, dataItem.id));
+					    	} else {
+						    	return;
+					    	}
+					    	
+					    	inputBox.addClass('filter-set');
+				    	}
+				    }
+				});
+				
+				$("#create-deck-cost-filter").userChange(function(e) { 
+					var value = (!isNaN(parseInt(this.value,10))) ? parseInt(this.value) : null;
+					var ddl = $("#create-deck-cost-operator").data("kendoDropDownList");
+					var dataItem = ddl.dataItem(ddl.select());
+					dsCardFilterable.filter(deckFilter.filterCost(value, dataItem.id));
+				
+					if (value !== null) {
+						$(this).addClass('filter-set');
+					} else {
+						$(this).removeClass('filter-set');
+					}
+			    });
+			    
+			    $("#create-deck-attack-filter").userChange(function(e) { 
+					var value = (!isNaN(parseInt(this.value,10))) ? parseInt(this.value) : null;  console.log(value);
+					var ddl = $("#create-deck-attack-operator").data("kendoDropDownList");
+					var dataItem = ddl.dataItem(ddl.select());
+					dsCardFilterable.filter(deckFilter.filterAttack(value, dataItem.id));
+				
+					if (value !== null) {
+						$(this).addClass('filter-set');
+					} else {
+						$(this).removeClass('filter-set');
+					}
+			    });
+			    
+			    $("#create-deck-health-filter").userChange(function(e) { 
+					var value = (!isNaN(parseInt(this.value,10))) ? parseInt(this.value) : null;
+					var ddl = $("#create-deck-health-operator").data("kendoDropDownList");
+					var dataItem = ddl.dataItem(ddl.select());
+					dsCardFilterable.filter(deckFilter.filterHealth(value, dataItem.id));
+				
+					if (value !== null) {
+						$(this).addClass('filter-set');
+					} else {
+						$(this).removeClass('filter-set');
+					}
+			    });
+			});
+			
+			function displayCardSearchStats(item) {
+				// hide the placeholder
+				$("#card-search-placeholder").hide();
+			
+				var cls = dsClasses.get(dsCardSearch.getValue(item.id, 'classid'));
+				if (cls) {
+					$("#card-search-stat-class").text(cls.name);
+					$("#card-search-stat-class").removeClass().addClass('stat-value c' + cls.id);
+					$("#card-search-stat-group-class").show();
+				} else {
+					$("#card-search-stat-group-class").hide();
+				}
+			
+				var quality = dsCardQualities.get(item.qualityid);
+				$("#card-search-stat-quality").text(quality.name);
+				$("#card-search-stat-quality").removeClass().addClass('stat-value q' + quality.id);
+				$("#card-search-stat-group-quality").show();
+				
+				var set = dsCardSets.get(item.setid);
+				$("#card-search-stat-set").text(set.name);
+				$("#card-search-stat-group-set").show();
+				
+				var race = dsCardRaces.get(dsCardSearch.getValue(item.id, 'raceid'));
+				if (race) {
+					$("#card-search-stat-race").text(race.name);
+					$("#card-search-stat-group-race").show();
+				} else {
+					$("#card-search-stat-group-race").hide();
+				}
+				
+				var unlocked = dsCardSearch.getValue(item.id, 'unlocked');
+				var gunlocked = dsCardSearch.getValue(item.id, 'gunlocked');
+				if (unlocked) { /* if one is undefined, they both should be */
+					
+					var unlockedText = "";
+					var gucls = dsClasses.get(dsCardSearch.getValue(item.id, 'guclassid'));
+					if (gucls) {
+						// class who unlocks golden basic neutral cards 
+						unlockedText = '(' + unlocked + ' / <span class="golden">' + gunlocked + '</span> by <span class="c' + gucls.id + '">' + gucls.name + '</span>)';
+					} else {
+						unlockedText = "(" + unlocked + ' / <span class="golden">' + gunlocked + "</span>)";
+					}
+				
+					$("#card-search-stat-unlocked").html(unlockedText);
+					$("#card-search-stat-group-unlocked").show();
+				} else {
+					$("#card-search-stat-group-unlocked").hide();
+				}
+
+				var soulbound = dsCardSearch.getValue(item.id, 'soulbound');
+				var gsoulbound = dsCardSearch.getValue(item.id, 'gsoulbound');
+				if (soulbound && gsoulbound) {
+					$("#card-search-stat-craft").text("Soulbound");
+					$("#card-search-stat-de").text("Soulbound");
+				} else {
+					var c = (soulbound) ? 'Soulbound' : quality.craft;
+					var d = (soulbound) ? 'Soulbound' : quality.de;
+					var gc = (gsoulbound) ? 'Soulbound' : quality.gcraft;
+					var gd = (gsoulbound) ? 'Soulbound' : quality.gde;
+					
+					$("#card-search-stat-craft").html('(' + c + ' / <span class="golden">' + gc + '</span>)');
+					$("#card-search-stat-de").html('(' + d + ' / <span class="golden">' + gd + '</span>)');
+				}	
+				
+				$("#card-search-stat-group-craft").show();
+				$("#card-search-stat-group-de").show();	
+				
+				var artist = dsArtists.get(item.artistid);
+				if (artist.url) {	
+					$("#card-search-stat-artist").html('<a href="' + artist.url + '" target="_blank">' + artist.name + '</a>');
+				} else {
+					$("#card-search-stat-artist").text(artist.name);
+				}	
+				
+				$("#card-search-stat-group-artist").show();					
+				
+				// todo: if no hero:  placeholder image, or load random minions, or just a bg color
+				$("#card-search-stats").removeClass().addClass('dark-bg-' + item.classid);
+				$("#card-search-image").css('background-image', 'url(/assets/cards/' + item.hhimg + '.png)');
+			}
+			
+			// resets all the ddl's and text boxes to the original configuration
+			function resetCreateDeckUI() {
+				$("#create-deck-name").val("");
+				$("#create-deck-neutral-filter").prop('checked', true);
+				$("#create-deck-text-filter").val("");
+				$("#create-deck-quality-filter").data("kendoDropDownList").select(0);
+				$("#create-deck-type-filter").data("kendoDropDownList").select(0);
+				$("#create-deck-race-filter").data("kendoDropDownList").select(0);
+				$("#create-deck-mechanic-filter").data("kendoDropDownList").select(0);					
+				$(".ddl-gtlt").each(function () {
+					var ddl = $(this).data("kendoDropDownList");
+					if (ddl !== undefined) {
+						ddl.select(0);
+					}
+			    });
+				$("#create-deck-cost-filter").val("");
+				$("#create-deck-attack-filter").val("");
+				$("#create-deck-health-filter").val("");
+				$("#lb-create-deck").find(".filter-set").removeClass("filter-set");
+			}
+			
+			// attempt to add a selected card to the deck.
+			function cardSelected(e) {
+				var cardid = $(e).context.dataset.cardid;
+		        var dataItem = dsCardFilterable.get(cardid);
+		        
+		        // we check the deck size in the addCard method, but this is for an appropriate error message
+		        if ((dsCardSelected.aggregates().count) && (dsCardSelected.aggregates().count.sum == 30)) {
+			    	$("#create-deck-err").html("<p><strong>What makes a deck, Mr. Lebowski?</strong></p><p>You cannot have more than 30 cards in your deck.</p>").showAndFade();
+			    	return;
+		        }
+			
+				if (!dsCardSelected.addCard(dataItem)) {
+					$("#create-deck-err").html("<p><strong>Smokey, this is not arena. This is constructed. There are rules.</strong></p><p>You can't have more than 2 of the same card (1 if it's legendary) in a deck.</p>").showAndFade();
+				}
+
+				$("#create-deck-count").text((dsCardSelected.aggregates().count) ? dsCardSelected.aggregates().count.sum : 0);
+			}
+			
+			// attempt to remove a selected card to the deck.
+			function cardRemoved(e) {
+				var cardid = $(e).context.dataset.cardid;
+		        var dataItem = dsCardSelected.get(cardid);
+		        
+		        if (dataItem.count > 1) {
+			        dsCardSelected.get(dataItem.id).set("count", dataItem.count-1);
+		        } else {
+			        dsCardSelected.get(dataItem.id).set("count", undefined);
+			        dsCardSelected.remove(dataItem);
+		        }
+
+				$("#create-deck-count").text((dsCardSelected.aggregates().count) ? dsCardSelected.aggregates().count.sum : 0);
+			}
+	    </script>
+	    <script id="ktmpl-ac-cards" type="text/x-kendo-template">
+	    	# 
+				var classIcon = (data.classid == undefined) ? null : "c-ico-" + data.classid;   	 
+	    	#	    	
+			<div class="ac-cards-element">
+				<div class="# if (classIcon) { ##= classIcon## } #"></div>
+				<p style="q#= data.qualityid #">#= data.name #</p>
+			</div>
+		</script>
+		<script id="ktmpl-create-deck-cards" type="text/x-kendo-template">
+			# 
+				var count = (data.count == undefined) ? null : data.count;
+				var countDisplay = (count) ? "block" : "none";
+	    	#
+			<div class="create-deck-entry-container">
+				<div class="circle magnify" data-hhimg="#= data.hhimg #">
+					<span class="glyphicon glyphicon-search"></span>
+				</div>
+				<div class="circle count" style="display:#= countDisplay #">
+					<p>#= count #</p>
+				</div>
+				<a data-cardid="#= data.id #" onclick="cardSelected(this); return false;" href="\\#"><img src="/assets/cards/#= data.hhimg #.png"></a>
+			</div>
+		</script>
+		<script id="ktmpl-magnify-card" type="text/x-kendo-template">
+			<img src="/assets/cards/#= data.target.context.dataset.hhimg #.png" />
+		</script>
+		<script id="ktmpl-selected-cards" type="text/x-kendo-template">	
+			# 
+				var count = (data.count == undefined) ? null : data.count;
+				if (count) {
+					if (data.qualityid == 5) {
+						count = "<span class='glyphicon glyphicon-star'></span>";
+					} else if (count < 2) {
+						count = null;
+					}
+				}
+	    	#
+	    	<a data-cardid="#= data.id #" onclick="cardRemoved(this); return false;" href="\\#">
+				<div style="position:relative">
+					<div class="create-deck-selected">
+						<span class="cost">#= data.cost #</span>
+						<span class="name q#= data.qualityid #">#= data.name #</span>
+						<span class="count"># if (count) { ##= count ## } #</span>
+					</div>
+					<span class="create-deck-selected-card-bg# if (count) { # multiple# } #" style="background-image:url(/assets/cards/#= data.hhimg #.png)"></span>
+					<span class="create-deck-selected-shadow"></span>
+				</div>
+	    	</a>
+		</script>
+		<script id="ktmpl-deck-list" type="text/x-kendo-template">	
+			# 
+				var count = (data.count == undefined) ? null : data.count;
+				if (count) {
+					if (data.qualityid == 5) {
+						count = "<span class='glyphicon glyphicon-star'></span>";
+					} else if (count < 2) {
+						count = null;
+					}
+				}
+	    	#
+			<div style="position:relative">
+				<div class="create-deck-selected">
+					<span class="cost">#= data.cost #</span>
+					<span class="name q#= data.qualityid #">#= data.name #</span>
+					<span class="count"># if (count) { ##= count ## } #</span>
+				</div>
+				<span class="create-deck-selected-card-bg# if (count) { # multiple# } #" style="background-image:url(/assets/cards/#= data.hhimg #.png)"></span>
+				<span class="create-deck-selected-shadow"></span>
+			</div>
+		</script>
+	 </body>
+</html>

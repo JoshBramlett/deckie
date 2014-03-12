@@ -1,0 +1,1017 @@
+html, body { 
+	height: 600px; 
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: url(/assets/background.jpg) right no-repeat;
+	-webkit-font-smoothing: antialiased;
+}
+
+#main-content {
+	width: 260px;
+	height: 100%;
+	margin-left: 40px;
+	position: relative;
+}
+
+#main-logo {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	background: url(/assets/icon128.png) center center no-repeat;
+}
+
+.light-box { 
+	position: fixed;
+	top: 0;
+	height: 100%;
+	display: block;
+	width: 260px;
+	background: rgba(0,0,0,0.9);
+	padding: 0;
+	margin: 0 0 0 -300px;
+}
+
+.light-box.large {
+	width: 760px;
+	margin: 0 0 0 -800px;
+}
+
+.light-box h3 {
+	color: white;
+	display: block;
+	text-align: center;
+}
+
+.lb-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-close-lb {
+	position: absolute;
+	top: 0;
+	right: 5px;
+}
+
+#global-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+	height: 100%;
+	max-width: 40px;
+	background-color: #34383c;
+	padding: 6px 8px;
+}
+
+#global-nav a {
+	display: block;
+	padding: 8px 5px;
+}
+
+#global-nav a span {
+	display: block;
+	opacity: 0.3;
+	transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
+}
+
+#global-nav a:hover span {
+	opacity: 1;
+	transition: opacity .1s ease-in-out;
+    -moz-transition: opacity .1s ease-in-out;
+    -webkit-transition: opacity .1s ease-in-out;
+}
+
+/* glyph buttons are <a> links with bootstrap glyphs */
+.glyph-button,
+.glyph-button:hover {
+	color: white!important;
+	text-decoration: none!important;
+}
+
+.glyph-button:focus {
+	outline: none!important;
+}
+
+/* used for adding an icon within the input element */
+.right-inner-addon {
+    position: relative;
+}
+
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+
+.right-inner-addon span {
+    position: absolute;
+    right: 0px;
+    padding: 7px 12px;
+    pointer-events: none;
+}
+
+.tooltip-inner {
+	white-space: nowrap;
+}
+
+/****************************************************
+ *
+ *                    ABOUT PANEL
+ *
+ ****************************************************/
+
+#lb-about {
+	color: #fff;
+	padding: 5px;
+}
+
+#lb-about p {
+	margin: 0;
+	text-align: left;
+}
+
+#deckie-info {
+	text-align: center;
+	margin: 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #444;
+}
+
+#deckie-info h1 {
+	font-family: 'Conv_belwe-condensed',sans-serif;
+	font-size: 32px;
+	margin: 0;
+}
+
+#qna ul {
+	list-style: none; 
+	padding: 0 12px;
+	font-size: 12px;
+}
+
+#qna .q {
+	font-weight: bold;
+}
+
+#qna .a {
+	margin-bottom: 8px;
+}
+
+#qna li {
+	text-align: center;
+}
+
+#custom-tweet-button, #btc-address {
+	border: 1px solid #ccc;
+    background-image: linear-gradient(#fff,#dedede);
+	border-radius: 3px;
+	color: #333;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	display: inline-block;
+	margin-top: 8px;
+}
+
+#custom-tweet-button a {
+    padding: 2px 5px 2px 20px;
+    background: url(/assets/favicon_twitter.ico) 1px center no-repeat;
+    color: #000;
+    text-decoration: none;
+}
+
+#btc-address {
+	margin-left: -6px;
+}
+
+#btc-address div {
+    padding: 2px 5px 2px 20px;
+    background: url(/assets/favicon_bitcoin.ico) 1px center no-repeat;
+    color: #000;
+    font-weight: normal;
+	font-size: 10px;
+    cursor: text;
+}
+
+#disclaimer {
+	color: #fff;
+	position: absolute;
+	bottom: 8px;
+	right: 8px;
+	left: 8px;
+	background: rgba(0,0,0,0.7);
+	border: 1px solid rgba(255,255,255,0.3);
+	padding: 5px;
+	font-size: 70%;
+	border-radius: 4px;
+}
+
+/****************************************************
+ *
+ *                 CARD SEARCH: DDL
+ *
+ ****************************************************/
+
+#ac-card-search-container {
+	padding: 10px 20px 6px 20px;
+}
+
+.ac-cards-element div {
+	float: left;
+	width: 26px;
+	height: 26px;
+	margin-right: 6px;
+}
+
+.ac-cards-element p {
+	float: left;
+	margin: 0;
+	font-weight: bold;
+	line-height: 26px;
+}
+
+/****************************************************
+ *
+ *                CARD SEARCH: PANEL
+ *
+ ****************************************************/
+
+#card-search-stats-title {
+	font-family: 'Conv_belwe-condensed',sans-serif;
+	text-shadow: 2px 2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, -2px -2px 0 #000;
+	color: #fff;
+	font-size: 22px;
+	text-align: center;
+	position: absolute;
+	right: 4px;
+}
+
+#card-search-stats-title > span {
+	display: inline-block;
+}
+
+#card-search-stats-title > span:nth-child(1) {
+	-webkit-transform: translateX(1px) translateY(11px) rotate(-5deg);
+}
+
+#card-search-stats-title > span:nth-child(2) {
+	-webkit-transform: translateX(-1px) translateY(8px) rotate(-14deg);
+}
+
+#card-search-stats-title > span:nth-child(3) {
+	-webkit-transform: translateX(-2px) translateY(6px) rotate(-6deg);
+}
+
+#card-search-stats-title > span:nth-child(4) {
+	-webkit-transform: translateX(-3px) translateY(5px) rotate(-2deg);
+}
+
+#card-search-stats-title > span:nth-child(6) {
+	-webkit-transform: translateX(-1px) translateY(5px) rotate(0deg);
+}
+
+#card-search-stats-title > span:nth-child(7) {
+	-webkit-transform: translateX(-2px) translateY(5px) rotate(4deg);
+}
+
+#card-search-stats-title > span:nth-child(8) {
+	-webkit-transform: translateX(-3px) translateY(6px) rotate(4deg);
+}
+
+#card-search-stats-title > span:nth-child(9) {
+	-webkit-transform: translateX(-4px) translateY(7px) rotate(7deg);
+}
+
+#card-search-stats-title > span:nth-child(10) {
+	-webkit-transform: translateX(-6px) translateY(9px) rotate(6deg);
+}
+
+#card-search-stats {
+	color: #fff;
+	font-weight: bold;
+	overflow: hidden;
+	border: 2px solid #222;
+	background-color: #242424;
+	border-radius: 4px;
+	width: 244px;
+	margin: 8px;
+	padding: 55px 0 6px 0;
+	min-height: 150px;
+}
+
+#card-search-stats a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+#card-search-stats > div {
+	clear: left;
+	display: none;
+}
+
+#card-search-placeholder {
+	text-align: center;
+	margin-top: 40px;
+}
+
+.stat-label {
+	width: 90px;
+	margin-right: 10px;
+	text-align: right;
+	float: left;
+	font-weight: normal;
+}
+
+.stat-value {
+	float: left;
+	max-width: 140px;
+}
+
+#card-search-image-container {
+	width: 248px;
+	height: 310px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#card-search-image-border {
+	background: url(/assets/card_border.png) center center no-repeat;
+	width: 100%;
+	height: 100%;
+	top: -2px;
+	position: absolute;
+}
+
+#card-search-image-bg {
+	background: url(/assets/card_bgicon.png) center center no-repeat;
+	margin: 8px;
+	background-color: #ad947c;
+}
+
+#card-search-image {
+	width: 220px;
+	height: 303px;
+	margin: 0 auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+/****************************************************
+ *
+ *                 SELECT DECK PANEL
+ *
+ ****************************************************/
+
+#select-deck-action-panel {
+	padding: 5px 0 8px 0;
+}
+ 
+#select-deck-action-panel .victorian-label {
+	background:transparent url(/assets/spritemap.png) 0 -141px no-repeat;
+	width: 252px!important;
+	height: 40px;
+	margin: 0 4px 4px 4px;
+}
+
+#select-deck-action-panel .victorian-label p {
+	font-size: 22px;
+	line-height: 42px;	
+}
+
+#deck-list-container {
+	display: none;
+}
+
+#deck-list-container > * {
+	float: left;
+}
+
+#deck-list-container button {
+	padding: 4px 8px;
+}
+
+#deck-list {
+	margin: 0 14px 0 8px;
+	height: 476px;
+	width: 192px;
+	padding: 4px 0;
+	background: transparent;
+	overflow: scroll;
+	border: none;
+	z-index: -1;
+}
+
+#edit-delete-deck-err {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	left: 10px;
+	display: none;
+	z-index: 1;
+}
+
+/****************************************************
+ *
+ *             CREATE DECK: CHOOSE HERO
+ *
+ ****************************************************/
+
+#lb-create-deck-choose-hero > div {
+	display: block;
+	width: 230px;
+	margin: 0 auto;
+}
+
+#lb-create-deck-choose-hero .victorian-label {
+	background:transparent url(/assets/spritemap.png) 0 -141px no-repeat;
+	width: 252px!important;
+	height: 40px;
+	margin-top: 15px!important;
+	margin-bottom: 10px!important;
+}
+
+#lb-create-deck-choose-hero .victorian-label p {
+	font-size: 22px;
+	line-height: 42px;	
+}
+
+.btn-choose-hero {
+	background:transparent url(/assets/choose_hero_icons.png) no-repeat;
+	display: inline-block;
+	width: 112px;
+	height: 92px;
+}
+
+.choose-hero-1 {
+	background-position: 0 0;
+}
+
+.btn-choose-hero.choose-hero-1:hover {
+	background-position: -112px 0;
+}
+
+.choose-hero-2 {
+	background-position: 0 -92px;
+}
+
+.btn-choose-hero.choose-hero-2:hover {
+	background-position: -112px -92px;
+}
+
+.choose-hero-3 {
+	background-position: 0 -184px;
+}
+
+.btn-choose-hero.choose-hero-3:hover {
+	background-position: -112px -184px;
+}
+
+.choose-hero-4 {
+	background-position: 0 -276px;
+}
+
+.btn-choose-hero.choose-hero-4:hover {
+	background-position: -112px -276px;
+}
+
+.choose-hero-5 {
+	background-position: 0 -368px;
+}
+
+.btn-choose-hero.choose-hero-5:hover {
+	background-position: -112px -368px;
+}
+
+.choose-hero-6 {
+	background-position: 0 -460px;
+}
+
+.btn-choose-hero.choose-hero-6:hover {
+	background-position: -112px -460px;
+}
+
+.choose-hero-7 {
+	background-position: 0 -552px;
+}
+
+.btn-choose-hero.choose-hero-7:hover {
+	background-position: -112px -552px;
+}
+
+.choose-hero-8 {
+	background-position: 0 -644px;
+}
+
+.btn-choose-hero.choose-hero-8:hover {
+	background-position: -112px -644px;
+}
+
+.choose-hero-9 {
+	background-position: 0 -736px;
+}
+
+.btn-choose-hero.choose-hero-9:hover {
+	background-position: -112px -736px;
+}
+
+/****************************************************
+ *
+ *             CREATE DECK: FILTER PANEL
+ *
+ ****************************************************/
+
+#create-deck-filter-panel {
+	float: left;
+	position: relative;
+	width: 200px;
+	height: 600px;
+	overflow: hidden;
+}
+
+#selected-hero {
+	background-image: url(/assets/choose_hero_icons.png);
+	margin: 0 auto;
+	margin-top: 8px;
+	width: 112px;
+	height: 92px;
+}
+
+#create-deck-filters {
+	width: 181px;
+	position: absolute;
+	bottom: 6px;
+	left: 9px;
+}
+
+#create-deck-filters .victorian-label {
+	background:transparent url(/assets/spritemap.png) 0 -181px no-repeat;
+	width: 180px!important;
+	height: 40px;
+	display: block;
+	margin-bottom: 5px;
+}
+
+#create-deck-filters .victorian-label p {
+	font-size: 22px;
+	line-height: 42px;	
+}
+
+.create-deck-filter-stat {
+	clear: left;
+	overflow: hidden;
+	background: rgba(255,255,255,0.5);
+	padding: 6px 3px;
+	border-radius: 4px;
+	margin-bottom: 6px;
+}
+
+.stat-icon {
+	display:block;
+	float:left;
+	margin: 1px 8px 1px 2px;
+}
+
+.filter-set {
+	border-color: #66ff33!important;
+	-webkit-box-shadow: 0 0 7px 0 #66ff33!important;
+	box-shadow: 0 0 7px 0 #66ff33!important;
+	border-width: 2px!important;
+}
+
+/****************************************************
+ *
+ *        CREATE DECK: FILTERABLE LIST PANEL
+ *
+ ****************************************************/
+ 
+#create-deck-global-list-panel {
+	float: left;
+	position: relative;
+	width: 350px;
+	height: 600px;
+	overflow: hidden;
+} 
+
+#create-deck-global-list { 
+	overflow: scroll;
+	background: #222;
+	height: 100%;
+	border: none;
+	padding: 6px 0;
+}
+
+/* elements */
+.create-deck-entry-container {
+	float: left;
+    position: relative;
+    width: 33%;
+    height: 160px;
+}
+
+.create-deck-entry-container img {
+	display:block;
+	width:110px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.create-deck-entry-container .circle {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 0 0 1px #222;
+	color: #fff;
+}
+
+.create-deck-entry-container .circle.magnify {
+	background:transparent url(/assets/spritemap.png) -120px -26px no-repeat;
+	right: 4px;
+	top: 10px;
+}
+
+.create-deck-entry-container .circle.count {
+	background:transparent url(/assets/spritemap.png) -96px -26px no-repeat;
+	right: 4px;
+	top: 38px;
+}
+
+.create-deck-entry-container .circle .glyphicon {
+	margin: 4px 6px;
+}
+
+.create-deck-entry-container .circle p {
+	line-height: 24px;
+	margin: 0;
+	width: 24px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#create-deck-global-list_tt_active {
+	background: transparent;
+	box-shadow: none;
+	border: none;
+}
+
+#create-deck-err {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	left: 10px;
+	display: none;
+	z-index: 1;
+}
+
+/****************************************************
+ *
+ *         CREATE DECK: SELECTED LIST PANEL
+ *
+ ****************************************************/
+ 
+#create-deck-user-list-panel {
+	float: right;
+	position: relative;
+	width: 210px;
+	height: 600px;
+	overflow: hidden;
+} 
+ 
+#create-deck-user-list {
+	height: 540px;
+	width: 192px;
+	padding: 4px 0;
+	background: inherit;
+	overflow: scroll;
+	border: none;
+	margin: 0 auto;
+}
+
+#create-deck-action-panel { 
+	position: relative;
+	padding: 8px 10px;
+}
+
+#create-deck-action-panel span {
+	font-family: 'Conv_belwe-condensed',sans-serif;
+	text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000;
+	color: #fff;
+	line-height: 26px;
+	display: inline-block;
+	text-align: center;
+	font-size: 26px;
+	position: relative;
+}
+
+#create-deck-action-panel span div {
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	right: 0;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.create-deck-selected {
+	background:transparent url(/assets/spritemap.png) 0 -221px no-repeat;
+	height: 32px;
+	width: 192px;
+	font-family: 'Conv_belwe-condensed',sans-serif;
+	text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000;
+	color: #fff;
+	font-size: 14px;
+	line-height: 32px;
+	
+}
+
+.create-deck-selected span {
+	display: inline-block;
+}
+
+.create-deck-selected .cost {
+	width: 30px;
+	text-align: center;
+	font-size: 24px;
+	line-height: 36px;
+	font-weight: bold;
+}
+
+.create-deck-selected .name {
+	vertical-align: top;
+}
+
+.create-deck-selected .count {
+	color: #FFD100;
+	vertical-align: top;
+	float: right;
+	width: 18px;
+	font-size: 20px;
+	line-height: initial;
+	padding-top: 8px;
+}
+
+.create-deck-selected .count .glyphicon-star {
+	font-size: 14px!important;
+	margin-left: -2px!important;
+}
+
+.create-deck-selected-shadow {
+	background: -webkit-linear-gradient(left, rgba(62,69,82,1) 39%,rgba(68,80,97,1) 45%,rgba(84,109,134,0) 60%,rgba(125,185,232,0) 100%);
+	position: absolute;
+	width: 170px;
+	height: 28px;
+	top: 2px;
+	left: 20px;
+	z-index: -1;
+}
+
+.create-deck-selected-card-bg {
+	background-position: -65px -94px;
+	background-size: 255px auto;
+	border-radius: 0 6px 6px 0;
+	opacity: .8;
+	position: absolute;
+	right: 0;
+	top: 5px;
+	transition: right 150ms;
+	width: 108px;
+	height: 22px;
+	z-index: -2;
+}
+
+.create-deck-selected-card-bg.multiple {
+	right: 24px!important;
+	border: 3px solid #625a5b!important;
+	top: 2px!important;
+	-webkit-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.9)!important;
+}
+
+/****************************************************
+ *
+ *                      COLORS
+ *
+ ****************************************************/
+
+/* qualities - references by uid */
+
+.q1 { 	/* free */
+	color: #9D9D9D!important;
+}
+
+.q2 {	/* common */
+	color: #FFF!important;
+}
+
+.q3 { 	/* rare */
+	color: #0070DD!important;
+}
+
+.q4 { 	/* epic */
+	color: #A335EE!important;
+}
+
+.q5 {	/* legendary */
+	color: #FF8000!important;
+}
+
+/* classes - references by uid */
+
+.c1 { 	/* druid */
+	color: #FF7C0A!important;
+}
+
+.c2 { 	/* hunter */
+	color: #AAD372!important;
+}
+
+.c3 { 	/* mage */
+	color: #68CCEF!important;
+}
+
+.c4 { 	/* paladin */
+	color: #F48CBA!important;
+}
+
+.c5 { 	/* priest */
+	color: #FFF!important;
+}
+
+.c6 { 	/* rogue */
+	color: #FFF468!important;
+}
+
+.c7 { 	/* shaman */
+	color: #2359FF!important;
+}
+
+.c8 { 	/* warlock */
+	color: #9382C9!important;
+}
+
+.c9 { 	/* warrior */
+	color: #C69B6D!important;
+}
+
+/* misc */
+.golden {
+	color: #FFD100!important;
+}
+
+/****************************************************
+ *
+ *                      IMAGES
+ *
+ ****************************************************/
+ 
+.spell-label {
+	background:transparent url(/assets/spritemap.png) 0 -58px no-repeat;
+	width: 252px;
+	height: 83px;
+}
+ 
+.c-ico-1 {	/* druid */
+	background:transparent url(/assets/spritemap.png) 0 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-2 {	/* hunter */
+	background:transparent url(/assets/spritemap.png) -26px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-3 {	/* mage */
+	background:transparent url(/assets/spritemap.png) -52px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-4 {	/* paladin */
+	background:transparent url(/assets/spritemap.png) -78px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-5 {	/* priest */
+	background:transparent url(/assets/spritemap.png) -104px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-6 {	/* rogue */
+	background:transparent url(/assets/spritemap.png) -130px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-7 {	/* shaman */
+	background:transparent url(/assets/spritemap.png) -156px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-8 {	/* warlock */
+	background:transparent url(/assets/spritemap.png) -182px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.c-ico-9 {	/* warrior */
+	background:transparent url(/assets/spritemap.png) -208px 0 no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+.ico-attack {
+	background:transparent url(/assets/spritemap.png) 0 -26px no-repeat;
+	width: 32px;
+	height: 32px;
+}
+
+.ico-health {
+	background:transparent url(/assets/spritemap.png) -32px -26px no-repeat;
+	width: 32px;
+	height: 32px;
+}
+
+.ico-cost {
+	background:transparent url(/assets/spritemap.png) -64px -26px no-repeat;
+	width: 32px;
+	height: 32px;
+}
+
+.ico-twitter {
+	background:transparent url(/assets/spritemap.png) -144px -26px no-repeat;
+	width: 33px;
+	height: 32px;
+}
+
+.ico-btc {
+	background:transparent url(/assets/spritemap.png) -177px -26px no-repeat;
+	width: 32px;
+	height: 32px;
+}
+
+.dark-bg-1 { 	/* druid */
+	background: url(/assets/dark_hero_malfurion.jpg) center center no-repeat;
+}
+
+.dark-bg-2 { 	/* hunter */
+	background: url(/assets/dark_hero_rexxar.jpg) center center no-repeat;
+}
+
+.dark-bg-3 { 	/* mage */
+	background: url(/assets/dark_hero_jaina.jpg) center center no-repeat;
+}
+
+.dark-bg-4 { 	/* paladin */
+	background: url(/assets/dark_hero_uther.jpg) center center no-repeat;
+}
+
+.dark-bg-5 { 	/* priest */
+	background: url(/assets/dark_hero_anduin.jpg) center center no-repeat;
+}
+
+.dark-bg-6 { 	/* rogue */
+	background: url(/assets/dark_hero_valeera.jpg) center center no-repeat;
+}
+
+.dark-bg-7 { 	/* shaman */
+	background: url(/assets/dark_hero_thrall.jpg) center center no-repeat;
+}
+
+.dark-bg-8 { 	/* warlock */
+	background: url(/assets/dark_hero_guldan.jpg) center center no-repeat;
+}
+
+.dark-bg-9 { 	/* warrior */
+	background: url(/assets/dark_hero_garrosh.jpg) center center no-repeat;
+}
+
+/****************************************************
+ *
+ *                       MISC
+ *
+ ****************************************************/
+
+.victorian-label p {
+	font-family: 'Conv_belwe-condensed',sans-serif;
+	text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000;
+	color: #fff;
+	text-align: center;
+	margin: 0;
+}
+
+@font-face {
+	font-family: 'Conv_belwe-condensed';
+	src: url('fonts/belwe-condensed.eot');
+	src: local('☺'), url('fonts/belwe-condensed.woff') format('woff'), url('fonts/belwe-condensed.ttf') format('truetype'), url('fonts/belwe-condensed.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,0 +1,9 @@
+# Ignore bower packages
+bower_components
+bower.json
+
+# Ignore psd
+assets/original
+
+# Ignore Mac specific files
+.DS_Store
