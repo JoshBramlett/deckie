@@ -4,8 +4,6 @@ var FrameProxy = (function () {
 	    _frame		= null;
 
 	_this.init = function () {	
-		console.log("proxy init()");
-		
 		// iframe object
 		_frame = document.getElementById('iframe');
 		

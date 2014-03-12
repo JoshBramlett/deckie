@@ -511,7 +511,7 @@ Deckie.cards = {
 		{id:307,name:"Southsea Captain",typeid:2,qualityid:4,setid:2,cost:3,artistid:134,attack:3,health:3,raceid:5,hhid:680,hhimg:"NEW1_027"},
 		{id:308,name:"Tauren Warrior",typeid:2,qualityid:2,setid:2,cost:3,artistid:135,attack:2,health:3,enrage:true,taunt:true,hhid:45,hhimg:"EX1_390"},
 		{id:309,name:"Thrallmar Farseer",typeid:2,qualityid:2,setid:2,cost:3,artistid:76,attack:2,health:3,windfury:true,hhid:765,hhimg:"EX1_021"},
-		{id:310,name:"Tinkmaster Overspark",typeid:2,qualityid:5,setid:2,cost:3,artistid:17,attack:2,health:2,battlecry:true,hhid:570,hhimg:"EX1_083"},
+		{id:310,name:"Tinkmaster Overspark",typeid:2,qualityid:5,setid:2,cost:3,artistid:17,attack:3,health:3,battlecry:true,hhid:570,hhimg:"EX1_083"},
 		{id:311,name:"Wolfrider",typeid:2,qualityid:1,setid:1,cost:3,artistid:5,attack:3,health:1,soulbound:true,gsoulbound:true,unlocked:1,gunlocked:59,guclassid:9,charge:true,hhid:289,hhimg:"CS2_124"},
 		{id:312,name:"Ancient Brewmaster",typeid:2,qualityid:2,setid:2,cost:4,artistid:34,attack:5,health:4,battlecry:true,hhid:186,hhimg:"EX1_057"},
 		{id:313,name:"Ancient Mage",typeid:2,qualityid:3,setid:2,cost:4,artistid:47,attack:2,health:5,spell_damage:true,hhid:915,hhimg:"EX1_584"},
