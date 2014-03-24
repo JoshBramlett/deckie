@@ -52,6 +52,8 @@ var HearthStoneCard = kendo.data.Model.define( {
 		windfury: 		{ type: "boolean", defaultValue: false },
 		
 		// required external properties
+		hpid:			{ type: "number" },
+		hsid: 			{ type: "number" },
 		hhid: 			{ type: "number" },
 		hhimg: 			{ type: "string" },
 		
