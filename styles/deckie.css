@@ -24,6 +24,10 @@ body {
 	background: url(/assets/icon128.png) center center no-repeat;
 }
 
+.alert p {
+	margin: 0 0 4px 0!important;
+}
+
 .light-box { 
 	position: fixed;
 	top: 0;
@@ -86,6 +90,15 @@ body {
 	transition: opacity .1s ease-in-out;
     -moz-transition: opacity .1s ease-in-out;
     -webkit-transition: opacity .1s ease-in-out;
+}
+
+.nav-hr {
+	width:24px;
+	margin:0 auto; 
+	height:1px;
+	margin:4px 0;
+	background:#fff;
+	opacity: 0.3;
 }
 
 /* glyph buttons are <a> links with bootstrap glyphs */
@@ -358,6 +371,211 @@ body {
 	margin: 0 auto;
 	background-position: center center;
 	background-repeat: no-repeat;
+}
+
+/****************************************************
+ *
+ *                   SECRETS PANEL
+ *
+ ****************************************************/
+
+#lb-secrets .victorian-label {
+	background:transparent url(/assets/spritemap.png) 0 -141px no-repeat;
+	width: 252px!important;
+	height: 40px;
+	margin-top: 15px!important;
+	margin: 0 4px;
+}
+
+#lb-secrets .victorian-label p {
+	font-size: 22px;
+	line-height: 42px;	
+}
+
+#secrets-container {
+	padding: 0 8px 8px 8px;
+	width: 260px;
+	overflow: hidden;
+	margin-left: 1px;
+}
+
+#secrets-container .nav-tabs {
+	border-bottom: none;
+	float: left;
+	width: 242px;
+}
+
+#secrets-container .nav-tabs>li {
+	width: 33%;
+	margin-right: 1px;
+}
+
+#secrets-container .nav-tabs li:last-child {
+	margin-right: 0;
+}
+
+#secrets-container .nav-tabs li a {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#secrets-container .nav-tabs li:not(.active) a {
+	background: rgba(255,255,255,0.5);
+	border: 1px solid rgba(255,255,255,0.2);
+}
+
+#secrets-container .nav-tabs li a:hover {
+	background: rgba(255,255,255,0.8);
+}
+
+#secrets-container .nav-tabs li a div {
+	margin: 0 auto;
+}
+
+#secrets-container .tab-content {
+	float: left;
+	width: 240px;
+	overflow-y: scroll;
+	border: 1px solid #ddd;
+	color: #000;
+	background: white;
+	padding: 8px;
+	height: 466px;
+}
+
+.secret-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.secret-list li>div {
+	line-height: 32px;
+	clear: both;
+	overflow: hidden;
+	border-bottom: 2px solid #ccc;
+	background: #ddd;
+	padding: 2px 4px 0 2px;
+	border-radius: 4px 4px 0 0;
+}
+
+.secret-cost {
+	font-family: 'Conv_belwe-condensed',sans-serif;
+	text-shadow: 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, -1px -1px 0 #000;
+	color: #fff;
+	font-size: 24px;
+	display: inline-block;
+	text-align: center;
+	float: left;
+}
+
+.secret-name {
+	float: left;
+	font-weight: bold;
+	font-size: 16px;
+	margin-left: 4px;
+}
+
+.secret-popularity {
+	float: right;
+	font-size: 12px;
+	cursor: help;
+}
+
+.secret-desc {
+	margin: 4px 0 14px 0;
+}
+
+#secret-disclaimer {
+	text-align: center;
+	font-style: italic;
+	color: #fff;
+	font-size: 10px;
+	padding-top: 7px;
+	clear: both;
+}
+
+/****************************************************
+ *
+ *                 IMPORT DECK PANEL
+ *
+ ****************************************************/
+
+#import-deck-header {
+	padding: 5px 0 8px 0;
+}
+ 
+#import-deck-header .victorian-label {
+	background:transparent url(/assets/spritemap.png) 0 -141px no-repeat;
+	width: 252px!important;
+	height: 40px;
+	margin: 0 4px 4px 4px;
+}
+
+#import-deck-header .victorian-label p {
+	font-size: 22px;
+	line-height: 42px;	
+}
+
+.import-container {
+	margin: 0 10px 8px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	line-height: 16px;
+	background-color: #fff;
+	position: relative;
+}
+
+.import-container header {
+	padding: 6px;
+	border-radius: 2px 2px 0 0;
+	font-weight: bold;
+}
+
+.import-container section {
+	padding: 8px;
+	overflow: hidden;
+}
+
+.import-container section input {
+	z-index: 1;
+}
+
+#import-deck-hearthstats header {
+	background: #e5e5e5 url(/assets/favicon_hearthstats.ico) 8px 6px no-repeat;
+}
+
+#import-deck-hearthpwn header {
+	background: #e5e5e5 url(/assets/favicon_hearthpwn.png) 8px 6px no-repeat;
+}
+
+#import-deck-hearthstats-loading,
+#import-deck-hearthpwn-loading {
+	display: none;
+	float: right;
+}
+
+#btn-import-deck-hearthstats,
+#btn-import-deck-hearthpwn {
+	float: right;
+}
+
+#import-deck-hearthpwn-err,
+#import-deck-hearthstats .alert {
+	margin-bottom: 8px;
+	padding: 6px;
+	font-size: 12px;
+}
+
+#import-deck-hearthstats-result-alert,
+#import-deck-hearthstats-err,
+#import-deck-hearthpwn-err {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	right: 4px;
+	display: none;
+	z-index: 2;
 }
 
 /****************************************************
@@ -785,6 +1003,69 @@ body {
 	border: 3px solid #625a5b!important;
 	top: 2px!important;
 	-webkit-box-shadow: inset -2px 0px 5px 0px rgba(0, 0, 0, 0.9)!important;
+}
+
+/****************************************************
+ *
+ *                   SETTINGS PANEL
+ *
+ ****************************************************/
+
+#lb-settings .victorian-label {
+	background:transparent url(/assets/spritemap.png) 0 -141px no-repeat;
+	width: 252px!important;
+	height: 40px;
+	margin: 15px 4px 10px 4px;
+}
+
+#lb-settings .victorian-label p {
+	font-size: 22px;
+	line-height: 42px;	
+}
+
+#settings-hearthstats header {
+	background: #e5e5e5 url(/assets/favicon_hearthstats.ico) 8px 6px no-repeat;
+}
+
+#settings-deckie header {
+	background: #e5e5e5 url(/assets/icon16.png) 8px 6px no-repeat;
+}
+
+#settings-deckie section ul {
+	list-style: none;
+	margin: 8px 0;
+	padding-left: 12px;
+}
+
+#settings-deckie section ul li {
+	margin-bottom: 4px;
+}
+
+#settings-deckie section ul li:last-child {
+	margin-bottom: 0;
+}
+
+.settings-section-title {
+	font-weight: bold;
+	margin: 12px 0 4px 0;
+}
+
+.settings-section-title:first-child {
+	margin-top: 0;
+}
+
+#btn-settings-deckie,
+#btn-settings-hearthstats {
+	float: right;
+}
+
+#settings-success {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	left: 10px;
+	display: none;
+	z-index: 1;
 }
 
 /****************************************************
