@@ -590,101 +590,181 @@ Deckie.cards = {
 
 var Background = (function (){
 
+	const CURRENT_VERSION = "2.0.0.4944";
+	
 	const KEY_DECKS = "decks";
-
+	const KEY_VERSION = "version";
+	const KEY_SETTING_DEFAULT_DECK = "us_deck";
+	const KEY_SETTING_DEFAULT_PAGE = "us_page";
+	const KEY_SETTING_HEARTHSTATS_USERKEY = "us_hs_userkey";
+	
 	var _this 		= {},
 		_decks		= [];
 
 	_this.init = function (){ 
-
-		// get the saved decks or initialize if none exist
-		var decks = _this.retrieve(KEY_DECKS);
-		if (decks === undefined) {
-			_this.store(KEY_DECKS, []);
+		var version = _this.retrieve(KEY_VERSION);
+		if (version == undefined) {
+			_this.install();
+		} else if (version != CURRENT_VERSION) {
+			_this.update();
 		} else {
-			_decks = decks;
+			_decks = _this.retrieve(KEY_DECKS);
 		}
 
 		// subscribe to events from proxy
-		chrome.extension.onMessage.addListener(onProxyMessage);	
+		chrome.extension.onMessage.addListener(onProxyMessage);
+		chrome.runtime.onSuspend.addListener(onSuspend);
 	};
+	
+	_this.install = function() {
+		// save the version number
+		_this.store(KEY_VERSION, CURRENT_VERSION);
+		
+		// set the "default" page to the home screen
+		_this.store(KEY_SETTING_DEFAULT_PAGE, 1);
+		
+		// init (or update) decks
+		_this.initializeDecks();
+	}
+	
+	_this.update = function() {
+		// disabled for this version (since version number functionality is just added)
+	}
+	
+	// background is getting suspended.
+	function onSuspend() {
+		// currently nothing to clean up
+	}
 
+	// message received from the proxy
 	function onProxyMessage (request, sender, sendResponse) { 	
 
 		switch (request.message) {
-			case 'snapshot': 
-			
+			case 'snapshot': 			
 				// retrieve all current values
 				var data = {
 					artists: Deckie.artists,
 					classes: Deckie.classes,
 					cards: Deckie.cards,
-					decks: _decks
+					decks: _decks,
+					settings: {
+						default_deck: _this.retrieve(KEY_SETTING_DEFAULT_DECK),
+						default_page: _this.retrieve(KEY_SETTING_DEFAULT_PAGE),
+						hs_userkey: _this.retrieve(KEY_SETTING_HEARTHSTATS_USERKEY)
+					}
 				}
 				
-				sendResponse({snapshot: data});
-				 
+				sendResponse({snapshot: data});				 
 				break;
 			case 'create-deck':
-
-				if (_this.createDeck(request.deck)) {
-					sendResponse({decks: _decks, created: request.deck.name});
-				} else {
-					sendResponse({error: "A deck with this name already exists."});
-				}			
+				var id = _this.createDeck(request.deck);
+				sendResponse({decks: _decks, id: id});
 				
 				break;
-			case 'update-deck':
-			
-				if (_this.updateDeck(request.deck)) {
-					sendResponse({decks: _decks, created: request.deck.name});
+			case 'update-deck':			
+				if (_this.updateLocalDeck(request.deck)) {
+					sendResponse({decks: _decks, id: request.deck.id});
 				} else {
-					sendResponse({error: "Something bad happened.  Please contact support."});
+					sendResponse({error: "Could not find the deck to update."});
 				}
 				
 				break;
 			case 'delete-deck':
-
-				if (_this.deleteDeck(request.name)) {
-					sendResponse({decks: _decks});
+				if (_this.deleteLocalDeck(request.id)) {
+					sendResponse({decks: _decks, default_deck: _this.retrieve(KEY_SETTING_DEFAULT_DECK)});
 				} else {
-					sendResponse({error: "Something bad happened.  Please contact support."});
+					sendResponse({error: "Could not find the deck to delete."});
 				}			
 				
+				break;
+			case 'get-hearthstats':
+				var url = "http://www.hearthstats.net/api/v1/decks/show?userkey=" + request.key;				
+				var xhr = new XMLHttpRequest();
+				xhr.onload = function(e) {
+					var response = JSON.parse(e.target.response);
+					// store the userkey locally on success
+					if (response.status == "success") {
+						_this.store(KEY_SETTING_HEARTHSTATS_USERKEY, request.key);
+					}
+				
+					chrome.runtime.sendMessage(sender.id, {message: "hearthstats-response", response: response}, null);
+				}
+				xhr.onerror = function(e) { 
+					chrome.runtime.sendMessage(sender.id, {message: "hearthstats-response", response: { status: "error", message: "Could not connect to HearthStats." } }, null);
+				}
+				xhr.open("GET", url, true);
+				xhr.send();
+
+				break;
+			case 'import-hearthstats-decks':
+				var sync_count = 0;
+				for (var i = 0; i < request.decks.length; ++i) {
+					if (_this.updateHearthStatsDeck(request.decks[i])) {
+						sync_count++;
+						continue;
+					}
+				
+					_this.createDeck(request.decks[i]);
+				}
+				
+				sendResponse({decks: _decks, attempted: request.decks.length, updated: sync_count});
+				break;
+			case 'update-user-settings':		
+				if (request.settings.default_deck !== undefined) {
+					// if the option label is selected, the incoming value will be null
+					if (request.settings.default_deck === null) {
+						request.settings.default_deck = undefined;
+					}
+				
+					_this.store(KEY_SETTING_DEFAULT_DECK, request.settings.default_deck);
+				}
+				
+				if (request.settings.default_page !== undefined) {
+					_this.store(KEY_SETTING_DEFAULT_PAGE, request.settings.default_page);
+				}
+				
+				if (request.settings.hs_userkey !== undefined) {
+					_this.store(KEY_SETTING_HEARTHSTATS_USERKEY, request.settings.hs_userkey);
+				}
+				
+				var updated = {
+					default_deck: _this.retrieve(KEY_SETTING_DEFAULT_DECK),
+					default_page: _this.retrieve(KEY_SETTING_DEFAULT_PAGE),
+					hs_userkey: _this.retrieve(KEY_SETTING_HEARTHSTATS_USERKEY)
+				};
+
+				sendResponse(updated);
 				break;
 		}
 	};
 
-	// retrieve a deck from the list
-	_this.getDeck = function(name) {
-		for (var i = 0; i < _decks.length; ++i) {
-			if (_decks[i].name == name) {
-				return _decks[i];
-			}
-		}
-		
-		return undefined;
-	};
-	
-	// creates and stores a new deck - will fail if a deck of the same name exists
 	_this.createDeck = function(deck) {
-		if (_this.getDeck(deck.name) !== undefined) {
-			return false;
-		}
+		var new_deck = {
+			id: _this.generateUID(),
+			hsuid: (deck.hsuid) ? deck.hsuid : undefined,
+			name: deck.name,
+			classid: deck.classid,
+			cards: deck.cards,
+			wins: (deck.wins) ? deck.wins : 0,
+			losses: (deck.losses) ? deck.losses : 0,
+			created: (deck.created) ? deck.created : Date.now(),
+			lastsync: Date.now(),
+		};
 
-		_decks.push(deck);
+		_decks.push(new_deck);
 		_this.store(KEY_DECKS, _decks);
 		
-		return true;
+		return new_deck.id;
 	};
 	
-	_this.updateDeck = function(deck) {
+	_this.updateLocalDeck = function(deck) {
 		for (var i = 0; i < _decks.length; ++i) {
-			if (_decks[i].name == deck.old) {
-				delete deck.old;
-				_decks[i] = deck;
-				_this.store(KEY_DECKS, _decks);
+			if (_decks[i].id == deck.id) {
+				_decks[i].name = deck.name;
+				_decks[i].cards = deck.cards;
+				_decks[i].lastsync = Date.now();
 				
+				_this.store(KEY_DECKS, _decks);
 				return true;
 			}
 		}
@@ -692,9 +772,32 @@ var Background = (function (){
 		return false;
 	};
 	
-	_this.deleteDeck = function(name) {
+	_this.updateHearthStatsDeck = function(deck) {
 		for (var i = 0; i < _decks.length; ++i) {
-			if (_decks[i].name == name) {
+			if (_decks[i].hsuid && _decks[i].hsuid == deck.hsuid) {
+				_decks[i].name = deck.name;
+				_decks[i].classid = deck.classid;
+				_decks[i].cards = deck.cards;
+				_decks[i].wins = deck.wins;
+				_decks[i].losses = deck.losses;
+				_decks[i].lastsync = Date.now();
+								
+				_this.store(KEY_DECKS, _decks);			
+				return true;
+			}
+		}
+		
+		return false;
+	};
+	
+	_this.deleteLocalDeck = function(id) {
+		for (var i = 0; i < _decks.length; ++i) {
+			if (_decks[i].id == id) {
+				// reset default deck
+				if (id == _this.retrieve(KEY_SETTING_DEFAULT_DECK)) {
+					_this.store(KEY_SETTING_DEFAULT_DECK, undefined);
+				}
+			
 				_decks.splice(i, 1);
 				_this.store(KEY_DECKS, _decks);
 				
@@ -715,6 +818,32 @@ var Background = (function (){
 	_this.retrieve = function(key) {
 		return localStorage[key] && JSON.parse(localStorage[key]);
 	};
+	
+	// http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+	_this.generateUID = function() {
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+	    	var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+			return v.toString(16);
+		});
+	};
+	
+	_this.initializeDecks = function() {
+		var decks = _this.retrieve(KEY_DECKS);
+		if (decks == undefined) {
+			decks = [];
+		}
+
+		// if required add support for id and lastsync values (added in v2)
+		for (var i = 0; i < decks.length; ++i) {
+			if (decks[i].id == undefined) {
+				decks[i].id = _this.generateUID();
+				decks[i].lastsync = Date.now();
+			}
+		}
+		
+		_this.store(KEY_DECKS, decks);
+		_decks = decks;
+	}
 
 	return _this;
 }());
