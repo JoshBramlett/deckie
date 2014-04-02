@@ -15,23 +15,23 @@ var HearthStoneCard = kendo.data.Model.define( {
 		setid:	 		{ type: "number" },
 		cost: 			{ type: "number" },
 		artistid: 		{ type: "number" },
-		
+
 		// not required - card stats & info
 		health: 		{ type: "number", defaultValue: null },
 		attack: 		{ type: "number", defaultValue: null },
 		durability: 	{ type: "number", defaultValue: null },
 		raceid: 		{ type: "number", defaultValue: null },
-		
+
 		// not required - hero info
 		classid: 		{ type: "number", defaultValue: null },
-		
+
 		// not required - player info
 		soulbound: 		{ type: "boolean", defaultValue: false },
 		gsoulbound: 	{ type: "boolean", defaultValue: false },
 		unlocked:		{ type: "number", defaultValue: null },
 		gunlocked:		{ type: "number", defaultValue: null },
 		guclassid:		{ type: "number", defaultValue: null },
-		
+
 		// not required - card abilities
 		battlecry: 		{ type: "boolean", defaultValue: false },
 		charge: 		{ type: "boolean", defaultValue: false },
@@ -50,13 +50,13 @@ var HearthStoneCard = kendo.data.Model.define( {
 		stealth: 		{ type: "boolean", defaultValue: false },
 		taunt: 			{ type: "boolean", defaultValue: false },
 		windfury: 		{ type: "boolean", defaultValue: false },
-		
+
 		// required external properties
 		hpid:			{ type: "number" },
 		hsid: 			{ type: "number" },
 		hhid: 			{ type: "number" },
 		hhimg: 			{ type: "string" },
-		
+
 		// deck creation
 		count:			{ type: "number" }
 	}
@@ -142,7 +142,7 @@ var DeckBuilder = kendo.data.Model.define( {
  *                  JQUERY PLUGINS
  *
  ****************************************************/
- 
+
 (function( $ ) {
 	// horizontal slide toggle - has hard coded left offset of 40px
     $.fn.slideToggleH = function(callback) {
@@ -151,13 +151,13 @@ var DeckBuilder = kendo.data.Model.define( {
 		}, {
 			complete: function() {
 				// performs callback function when finished
-			    if (typeof callback == 'function') { 
-					callback.call(this); 
+			    if (typeof callback == 'function') {
+					callback.call(this);
 				}
 			}
 		});
     };
-    
+
     // Shows the element and fades it out
     $.fn.showAndFade = function() {
     	var me = $(this);
@@ -167,9 +167,9 @@ var DeckBuilder = kendo.data.Model.define( {
 	    	}, 3000);
     	});
     };
-    
+
     // Events to monitor if 'input' event is not supported
-    // The boolean value is whether we have to 
+    // The boolean value is whether we have to
     // re-check after the event with a setTimeout()
     var events = [
         "keyup", false,
@@ -222,7 +222,7 @@ var DeckBuilder = kendo.data.Model.define( {
             }
         });
     };
-    
+
 }( jQuery ));
 
 /****************************************************
@@ -230,9 +230,9 @@ var DeckBuilder = kendo.data.Model.define( {
  *                 KENDO EXTENSIONS
  *
  ****************************************************/
- 
+
 // kendo only assigns the default values on new records, so we extend the
-// dataSource to provide us with a way to get the default value if the 
+// dataSource to provide us with a way to get the default value if the
 // property is not set.
 $.extend(kendo.data.DataSource.prototype, {
 	getValue: function(index, property) {
@@ -240,8 +240,8 @@ $.extend(kendo.data.DataSource.prototype, {
 		if (item === undefined) {
 			return null;
 		}
-		
-		if (item.hasOwnProperty(property)) { 
+
+		if (item.hasOwnProperty(property)) {
 			// return set property
 			return item[property];
 		} else {
@@ -251,7 +251,7 @@ $.extend(kendo.data.DataSource.prototype, {
 				return this.options.schema.model.fields[property].defaultValue;
 			}
 		}
-		
+
 		// no match - return null
 		return null;
 	},
@@ -262,8 +262,8 @@ $.extend(kendo.data.DataSource.prototype, {
 			dataItem.count = count_override;
 			this.add(dataItem);
 			return;
-		} 
-		
+		}
+
 		// make sure we don't have a full deck
 		var total = this.aggregates().count;
 		if (total && total.sum >= 30) {
@@ -278,15 +278,15 @@ $.extend(kendo.data.DataSource.prototype, {
 		} else if (count > 2) {
 			return false;
 		}
-		
+
 		// only add if record is new - update the count otherwise
-		if (count > 1) { 
+		if (count > 1) {
 			dataItem.set("count", count);
-		} else {	
+		} else {
 			this.add(dataItem);
 			dataItem.set("count", count);
 		}
-		
+
 		return count;
 	},
 	cleanDeck: function() {
@@ -294,7 +294,7 @@ $.extend(kendo.data.DataSource.prototype, {
 		for (var i = 0; i < data.length; i++) {
             data[i].count = undefined;
         }
-	
+
         // remove any existing
         this.data([]);
 	},
@@ -305,10 +305,10 @@ $.extend(kendo.data.DataSource.prototype, {
         for (var i = 0; i < data.length; i++) {
             deck.push({
 	        	id: data[i].id,
-	        	count: data[i].count 
+	        	count: data[i].count
             });
         }
-        
+
         return deck;
 	}
 });
@@ -326,7 +326,7 @@ String.prototype.endsWith = function(suffix) {
 String.prototype.sluggify = function() {
   	this = this.replace(/^\s+|\s+$/g, ''); // trim
   	this = this.toLowerCase();
-  
+
   	// remove accents, swap ñ for n, etc
   	var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
   	var to   = "aaaaeeeeiiiioooouuuunc------";
@@ -358,18 +358,18 @@ function DeckFilter(classid) {
 	this.setid = null;
 	this.raceid = null;
 	this.mechanic = null;
-	
+
 	this.cost = null;
 	this.attack = null;
 	this.health = null;
-	
+
 	this.cost_op = "gt";
 	this.attack_op = "gt";
 	this.health_op = "gt";
-	
+
 	this.classVisible = true;
 	this.neutralVisible = true;
-	
+
 	// class + neutral base filter
 	this.base = {
 		logic: "or",
@@ -450,7 +450,7 @@ DeckFilter.prototype.filterHealth = function(value, operator) {
 // Build and return filter object
 DeckFilter.prototype.getFilter = function() {
 	var filter = [];
-	
+
 	// show class and/or neutral cards
 	if (this.classVisible && this.neutralVisible) {
 		filter.push(this.base);
@@ -461,15 +461,15 @@ DeckFilter.prototype.getFilter = function() {
 	} else {
 		return filter;
 	}
-	
+
 	// name filter
 	filter.push({field:"name",operator:"contains",value:this.name});
-	
+
 	// quality filter
 	if (this.typeid) {
 		filter.push({ field: "typeid", operator: "eq", value: this.typeid });
 	}
-	
+
 	// quality filter
 	if (this.qualityid) {
 		filter.push({ field: "qualityid", operator: "eq", value: this.qualityid });
@@ -479,17 +479,17 @@ DeckFilter.prototype.getFilter = function() {
 	if (this.setid) {
 		filter.push({ field: "setid", operator: "eq", value: this.setid });
 	}
-	
+
 	// race filter
 	if (this.raceid) {
 		filter.push({ field: "raceid", operator: "eq", value: this.raceid });
 	}
-	
+
 	// mechanic filter
 	if (this.mechanic) {
 		filter.push({ field: this.mechanic, operator: "eq", value: true });
 	}
-	
+
 	// cost filter
 	if (this.cost !== null) {
 		filter.push({ field: "cost", operator: this.cost_op, value: this.cost });
@@ -498,7 +498,7 @@ DeckFilter.prototype.getFilter = function() {
 	if (this.attack !== null) {
 		filter.push({ field: "attack", operator: this.attack_op, value: this.attack });
 	}
-	
+
 	// health filter - searches both health and weapon durability
 	if (this.health !== null) {
 		filter.push({
@@ -509,7 +509,7 @@ DeckFilter.prototype.getFilter = function() {
 			]
 		});
 	}
-	
+
 	return filter;
 }
 
@@ -526,48 +526,48 @@ function App() {
 		sort: [{ field: "cost", dir: "asc" },{ field: "name", dir: "asc" }],
 		aggregate: { field: "count", aggregate: "sum" }
 	});
-	
+
 	/* immutable card list */
 	this._ds_cards_immutable = new kendo.data.DataSource({
 	    schema: { model: HearthStoneCard },
 		sort: [{ field: "cost", dir: "asc" },{ field: "name", dir: "asc" }]
 	});
-	
+
 	/* static data source for hearthstone classes */
 	/* (e.g. Priest, Paladin, etc.) */
 	this._ds_classes = new kendo.data.DataSource({
 	    schema: { model: HearthStoneClass }
 	});
-	
+
 	/* static data source for hearthstone artists */
 	this._ds_artists = new kendo.data.DataSource({
 	    schema: { model: HearthStoneArtist }
 	});
-	
+
 	/* static data source for hearthstone card qualities */
 	/* (e.g. Epic, Legendary, etc.) */
 	this._ds_card_qualities = new kendo.data.DataSource({
 	    schema: { model: HearthStoneCardQuality }
 	});
-	
+
 	/* static data source for hearthstone card types */
 	/* (e.g. Spell, Minion, etc.) */
 	this._ds_card_types = new kendo.data.DataSource({
 	    schema: { model: HearthStoneCardType }
 	});
-	
+
 	/* static data source for hearthstone card races */
 	/* (e.g. Beast, Murloc, etc.) */
 	this._ds_card_races = new kendo.data.DataSource({
 	    schema: { model: HearthStoneCardRace }
 	});
-	
+
 	/* static data source for hearthstone card sets */
 	/* (e.g. Basic, Expert, etc.) */
 	this._ds_card_sets = new kendo.data.DataSource({
 	    schema: { model: HearthStoneCardSet }
 	});
-	
+
 	/* user created decks */
 	this._ds_decks = new kendo.data.DataSource({
 	    schema: { model: DeckBuilder }
@@ -581,7 +581,7 @@ App.prototype.init = function(origin, source, snapshot) {
 	this._us_default_deck = snapshot.settings.default_deck;
 	this._us_default_page = snapshot.settings.default_page;
 	this._us_hs_userkey = snapshot.settings.hs_userkey;
-	
+
 	this._ds_cards_immutable.data(snapshot.cards.list);
 	this._ds_classes.data(snapshot.classes);
 	this._ds_artists.data(snapshot.artists);
@@ -592,7 +592,7 @@ App.prototype.init = function(origin, source, snapshot) {
 	this._ds_decks.data(snapshot.decks);
 }
 
-App.prototype.getDefaultDeck = function() { 
+App.prototype.getDefaultDeck = function() {
 	return this._us_default_deck;
 }
 
@@ -682,7 +682,7 @@ App.prototype.selectCardsFromDeck = function(deck) {
 	}
 }
 
-// for sending messages to the proxy 
+// for sending messages to the proxy
 App.prototype.toProxy = function(message, data) {
 	var data = data || {};
 	this._source.postMessage({
@@ -698,7 +698,7 @@ App.prototype.showPanel = function(dom, width, callback) {
 		// no panel selected
 		$(dom).slideToggleH();
 		this._active_panel = dom;
-		
+
 		if (callback) {
 			callback(true);
 		}
@@ -708,12 +708,12 @@ App.prototype.showPanel = function(dom, width, callback) {
 			me.toProxy("iframe-width", width);
 			$(dom).slideToggleH(function() {
 				me._active_panel = dom;
-			
+
 				if (callback) {
 					callback(true);
 				}
 			});
-			
+
 		});
 	} else {
 		// same panel was selected - do nothing
@@ -723,79 +723,82 @@ App.prototype.showPanel = function(dom, width, callback) {
 	}
 }
 
-App.prototype.decodeHearthPwn = function(url) { 
+App.prototype.decodeHearthPwn = function(url) {
 	var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 	if (!regexp.test(url)) {
 		return false;
 	}
-	
+
 	var endURI = url.lastIndexOf("/");
 	var hash = url.indexOf("#");
 	if (endURI < 0 || hash < 0) {
 		return false;
 	}
-	
+
 	var classList = ["druid","hunter","mage","paladin","priest","rogue","shaman","warlock","warrior"];
 	var className = url.substring(endURI+1, hash);
 	var classid = classList.indexOf(className) + 1;
 	if (classid < 0) {
 		return false;
 	}
-	
+
 	if (url.endsWith(";")) {
 		url = url.substring(0, url.length-1);
 	}
-	
+
 	var encoded = url.substring(hash+1);
 	var cards = encoded.split(";");
 	if (cards.length < 1) {
 		return false;
 	}
-	
+
 	this._ds_cards.cleanDeck();
 	for (var i = 0; i < cards.length; ++i) {
 		var card = cards[i].split(":");
 		if (card.length != 2) {
-			this._ds_cards.cleanDeck(); 
+			this._ds_cards.cleanDeck();
 			return false;
 		}
-		
+
 		var cardid = parseInt(card[0],10);
 		var cardcnt = parseInt(card[1],10);
 		if (cardid == NaN || cardcnt == NaN || cardcnt < 1 || cardcnt > 2) {
-			this._ds_cards.cleanDeck(); 
+			this._ds_cards.cleanDeck();
 			return false;
 		}
-		
+
 		var cardObj = this._ds_cards_immutable.data().filter(function (f) {
 			return f.hpid == cardid;
 		});
-		
+
 		if (cardObj.length != 1) {
-			this._ds_cards.cleanDeck(); 
+			this._ds_cards.cleanDeck();
 			return false;
 		}
-		
+
 		this._ds_cards.addCard(cardObj[0], cardcnt);
 	}
 
 	return classid;
 }
 
-App.prototype.decodeHearthStats = function(response) { 
+App.prototype.decodeHearthStats = function(response) {
 
 	var to_import = [];
 
 	var decks = response;
 	for (var i = 0; i < decks.length; ++i) {
 		this._ds_cards.cleanDeck();
+		if (decks[i].cardstring == null || decks[i].cardstring == 0){
+			continue;
+		}
 		var cards = decks[i].cardstring.split(",");
 		if (cards.length >= 1) {
 			for (var j = 0; j < cards.length; ++j) {
 				var card = cards[j].split("_");
 				var cardid = parseInt(card[0],10);
 				var cardcnt = parseInt(card[1],10);
-				
+
 				var cardObj = this._ds_cards_immutable.data().filter(function (f) {
 					return f.hsid == cardid;
 				});
@@ -803,7 +806,7 @@ App.prototype.decodeHearthStats = function(response) {
 				this._ds_cards.addCard(cardObj[0], cardcnt);
 			}
 		}
-		
+
 		var import_entry = {
 			hsuid: decks[i].unique_deck_id,
 			name: decks[i].name,
@@ -814,7 +817,7 @@ App.prototype.decodeHearthStats = function(response) {
 			created: decks[i].created_at,
 			lastsync: Date.now(),
 		};
-		
+
 		to_import.push(import_entry);
 	}
 
