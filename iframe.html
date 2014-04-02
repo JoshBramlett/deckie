@@ -658,16 +658,6 @@
 				    dataValueField: "id",
 				    optionLabel: "< Select >",
 				    template: kendo.template($("#ktmpl-ac-cards").text(), { useWithBlock:false }),
-/*
-				    dataBound: function(e) {
-						var default_deck = _app.getDefaultDeck();
-		 				if (default_deck) {
-		 					this.value(default_deck);
-			 				_app.selectCardsFromDeck(this.dataItem(this.select()));
-					    	$("#deck-list-container").show();
-		 				}  
-				    },
-*/
 				    select: function(e) { 
 				    	if (e.item.index() == 0) {
 					    	$("#deck-list-container").hide();

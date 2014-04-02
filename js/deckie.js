@@ -820,29 +820,3 @@ App.prototype.decodeHearthStats = function(response) {
 
 	return to_import;
 }
-
-/*
-{
-    "active": null,
-    "cardstring": "172_2,58_1,92_2,84_1,4_1,30_2,105_1,374_2,294_2,308_2,40_2,258_1,346_1,73_2,127_2,368_1,216_1,289_2,142_1,241_1",
-    "created_at": "2014-02-18T22:48:42Z",
-    "decklink": "",
-    "id": 15645,
-    "is_public": false,
-    "klass_id": 7,
-    "loses": 0,
-    "name": "Control 2/18/14",
-    "notes": "<p>\r\n\t http://www.hearthhead.com/deck=28174&amp;edit\r\n</p>",
-    "race": "Shaman",
-    "slot": null,
-    "slug": "control-2-18-14",
-    "unique_deck_id": 7219,
-    "updated_at": "2014-03-21T02:40:09Z",
-    "user_id": 14714,
-    "user_num_losses": 21,
-    "user_num_matches": 41,
-    "user_num_wins": 20,
-    "user_winrate": 48.7805,
-    "wins": 20
-},
-*/
