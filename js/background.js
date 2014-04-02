@@ -590,7 +590,7 @@ Deckie.cards = {
 
 var Background = (function (){
 
-	const CURRENT_VERSION = "2.0.1.4944";
+	const CURRENT_VERSION = "2.0.2.4944";
 	
 	const KEY_DECKS = "decks";
 	const KEY_VERSION = "version";

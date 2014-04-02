@@ -3,7 +3,7 @@
 
 	"name": "Deckie",
 	"description": "Hearthstone deck manager.",
-	"version": "2.0.1.4944",
+	"version": "2.0.2.4944",
 	"author": "Josh Bramlett",
 	"icons": { 
 		"16": "assets/icon16.png",
