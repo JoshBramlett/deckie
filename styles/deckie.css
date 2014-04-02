@@ -424,7 +424,7 @@ body {
 	border: 1px solid rgba(255,255,255,0.2);
 }
 
-#secrets-container .nav-tabs li a:hover {
+#secrets-container .nav-tabs li:not(.active) a:hover {
 	background: rgba(255,255,255,0.8);
 }
 
