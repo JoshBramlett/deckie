@@ -628,7 +628,11 @@ var Background = (function (){
 	}
 	
 	_this.update = function() {
-		// disabled for this version (since version number functionality is just added)
+		// save the version number
+		_this.store(KEY_VERSION, CURRENT_VERSION);
+		
+		// init (or update) decks
+		_this.initializeDecks();
 	}
 	
 	// background is getting suspended.
@@ -712,8 +716,8 @@ var Background = (function (){
 			case 'update-user-settings':		
 				if (request.settings.default_deck !== undefined) {
 					// if the option label is selected, the incoming value will be null
-					if (request.settings.default_deck === null) {
-						request.settings.default_deck = undefined;
+					if (!request.settings.default_deck) {
+						request.settings.default_deck = null;
 					}
 				
 					_this.store(KEY_SETTING_DEFAULT_DECK, request.settings.default_deck);
@@ -795,7 +799,7 @@ var Background = (function (){
 			if (_decks[i].id == id) {
 				// reset default deck
 				if (id == _this.retrieve(KEY_SETTING_DEFAULT_DECK)) {
-					_this.store(KEY_SETTING_DEFAULT_DECK, undefined);
+					_this.store(KEY_SETTING_DEFAULT_DECK, null);
 				}
 			
 				_decks.splice(i, 1);
