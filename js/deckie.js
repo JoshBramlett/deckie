@@ -748,7 +748,7 @@ App.prototype.decodeHearthPwn = function(url) {
 
 	var encoded = url.substring(hash+1);
 	var cards = encoded.split(";");
-	if (cards.length < 1) {
+	if (cards.length < 1 || !cards[0]) {
 		return false;
 	}
 
@@ -783,17 +783,13 @@ App.prototype.decodeHearthPwn = function(url) {
 }
 
 App.prototype.decodeHearthStats = function(response) {
-
 	var to_import = [];
-
 	var decks = response;
 	for (var i = 0; i < decks.length; ++i) {
-		this._ds_cards.cleanDeck();
-		if (decks[i].cardstring == null || decks[i].cardstring == 0){
-			continue;
-		}
-		var cards = decks[i].cardstring.split(",");
-		if (cards.length >= 1) {
+		this._ds_cards.cleanDeck(); 
+
+		if (decks[i].cardstring) {
+			var cards = decks[i].cardstring.split(",");
 			for (var j = 0; j < cards.length; ++j) {
 				var card = cards[j].split("_");
 				var cardid = parseInt(card[0],10);
@@ -808,7 +804,7 @@ App.prototype.decodeHearthStats = function(response) {
 		}
 
 		var import_entry = {
-			hsuid: decks[i].unique_deck_id,
+			hsuid: decks[i].id,
 			name: decks[i].name,
 			classid: decks[i].klass_id,
 			cards: _app.getCardDataSource().serialize(),

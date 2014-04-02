@@ -671,7 +671,7 @@ var Background = (function (){
 				break;
 			case 'delete-deck':
 				if (_this.deleteLocalDeck(request.id)) {
-					sendResponse({decks: _decks});
+					sendResponse({decks: _decks, default_deck: _this.retrieve(KEY_SETTING_DEFAULT_DECK)});
 				} else {
 					sendResponse({error: "Could not find the deck to delete."});
 				}			
@@ -793,6 +793,11 @@ var Background = (function (){
 	_this.deleteLocalDeck = function(id) {
 		for (var i = 0; i < _decks.length; ++i) {
 			if (_decks[i].id == id) {
+				// reset default deck
+				if (id == _this.retrieve(KEY_SETTING_DEFAULT_DECK)) {
+					_this.store(KEY_SETTING_DEFAULT_DECK, undefined);
+				}
+			
 				_decks.splice(i, 1);
 				_this.store(KEY_DECKS, _decks);
 				

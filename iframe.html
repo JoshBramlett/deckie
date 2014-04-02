@@ -501,6 +501,7 @@
 						break;
 					case "delete-deck": 
 						if (e.data.data.error === undefined) {
+							_app.setDefaultDeck(e.data.data.default_deck);
 							_app.getDeckDataSource().data(e.data.data.decks);
 							$("#ddl-decks").data("kendoDropDownList").select(0);
 							$("#deck-list-container").hide();
@@ -526,7 +527,12 @@
 	 					$("#import-deck-hearthstats-loading").hide(); 				
 
 	 					_app.getDeckDataSource().data(e.data.data.decks);
-						_app.showPanel($("#lb-select-deck"), 300, function(result) {
+	 					// If default deck was updated, cards will not be built
+						// Simple fix - Show no selected deck on HS import/update
+						$("#ddl-decks").data("kendoDropDownList").select(0);
+						$("#deck-list-container").hide();
+							
+						_app.showPanel($("#lb-select-deck"), 300, function(result) {				
 							$("#import-deck-hearthstats-result-alert").html("<p>New decks imported:&nbsp;" + (e.data.data.attempted - e.data.data.updated) + "</p><p>Existing decks synced:&nbsp;" + e.data.data.updated + "</p>").showAndFade();
 		 				});
 	 					
