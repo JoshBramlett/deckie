@@ -631,6 +631,9 @@ var Background = (function (){
 		// save the version number
 		_this.store(KEY_VERSION, CURRENT_VERSION);
 		
+		// overwrite default deck to null (fixes issue where it could not read undefined value)
+		_this.store(KEY_SETTING_DEFAULT_DECK, null);
+		
 		// init (or update) decks
 		_this.initializeDecks();
 	}
