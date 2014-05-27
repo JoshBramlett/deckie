@@ -232,7 +232,7 @@ Deckie.cards = {
 		{id:36,name:"Snake Trap",typeid:1,qualityid:4,setid:2,cost:2,artistid:34,classid:2,secret:true,hpid:210,hsid:247,hhid:455,hhimg:"EX1_554"},
 		{id:37,name:"Snipe",typeid:1,qualityid:2,setid:2,cost:2,artistid:35,classid:2,secret:true,hpid:553,hsid:290,hhid:814,hhimg:"EX1_609"},
 		{id:38,name:"Starving Buzzard",typeid:2,qualityid:2,setid:1,cost:2,artistid:34,health:1,attack:2,raceid:1,classid:2,soulbound:true,gsoulbound:true,unlocked:4,gunlocked:47,hpid:101,hsid:212,hhid:1241,hhimg:"CS2_237"},
-		{id:39,name:"Unleash the Hounds",typeid:1,qualityid:2,setid:2,cost:2,artistid:36,classid:2,charge:true,hpid:317,hsid:78,hhid:1243,hhimg:"EX1_538"},
+		{id:39,name:"Unleash the Hounds",typeid:1,qualityid:2,setid:2,cost:3,artistid:36,classid:2,charge:true,hpid:317,hsid:78,hhid:1243,hhimg:"EX1_538"},
 		{id:40,name:"Animal Companion",typeid:1,qualityid:2,setid:1,cost:3,artistid:37,classid:2,soulbound:true,gsoulbound:true,unlocked:2,gunlocked:45,hpid:578,hsid:53,hhid:437,hhimg:"NEW1_031"},
 		{id:41,name:"Deadly Shot",typeid:1,qualityid:2,setid:2,cost:3,artistid:38,classid:2,hpid:239,hsid:281,hhid:1093,hhimg:"EX1_617"},
 		{id:42,name:"Eaglehorn Bow",typeid:3,qualityid:3,setid:2,cost:3,artistid:14,attack:3,durability:2,classid:2,hpid:363,hsid:255,hhid:1662,hhimg:"EX1_536"},

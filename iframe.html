@@ -299,6 +299,7 @@
 	 		</div>
 	 		<div id="deck-list-container">
 		 		<div id="deck-list"></div>
+		 		<button id="btn-share-deck" type="button" class="btn btn-primary" title="Delete"><span class="glyphicon glyphicon-camera"></span></button>
 		 		<button id="btn-edit-deck" type="button" class="btn btn-primary" title="Edit" style="margin: 6px 0;"><span class="glyphicon glyphicon-pencil"></span></button>
 		 		<button id="btn-delete-deck" type="button" class="btn btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
 	 		</div>
@@ -374,7 +375,7 @@
 	 	<div id="lb-about" class="light-box">
 	 		<div id="deckie-info">
 	 			<h1>Deckie</h1>
-	 			<p style="text-align:center;">All cards updated for Hearthstone patch 1.0.0.4944</p>
+	 			<p style="text-align:center;">All cards updated for Hearthstone patch 1.0.0.5435</p>
 	 		</div>
 	 		<div id="qna">
 		 		<p style="text-align:center;">Well Met!  I hope you find this humble little Chrome extension useful.</p>
@@ -431,6 +432,7 @@
 	 	<script src="/lib/jquery.min.js"></script>
 	 	<script src="/lib/mbootstrap/js/bootstrap.min.js"></script>
 	 	<script src="/lib/kendoui/js/kendo.web.min.js"></script>
+	 	<script src="/lib/html2canvas.js"></script>
 	 	<script src="/js/deckie.js"></script>
 	 	<script>
 	 		var _app = new App();
@@ -677,6 +679,15 @@
 				$("#deck-list").kendoListView({
 	                dataSource: _app.getCardDataSource(),
 	                template: kendo.template($("#ktmpl-deck-list").text(), { useWithBlock:false })
+	            });
+	            
+	            $("#btn-share-deck").click(function(e) {
+					html2canvas($("#deck-list"), {
+						background: "#000",
+						onrendered: function(canvas) {
+					    	document.body.appendChild(canvas);
+						}
+					});
 	            });
 	            
 	            $("#btn-edit-deck").click(function(e) {
