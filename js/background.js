@@ -161,7 +161,14 @@ Deckie.artists = [
 	{id:146,name:"Luke \"Mr. Jack\" Mancini",url:"http://mr--jack.deviantart.com/"},
 	{id:147,name:"Ian Ameling",url:"http://ianameling.blogspot.com/"},
 	{id:148,name:"Greg Staples",url:"http://www.gregstaples.co.uk/"},
-	{id:149,name:"Svetlin Velinov",url:"http://svetlinvelinov.tumblr.com/"}
+	{id:149,name:"Svetlin Velinov",url:"http://svetlinvelinov.tumblr.com/"},
+	{id:150,name:"Mike Nicholson",url:"https://sites.google.com/site/mikenart/"},
+	{id:151,name:"Jon McConnell",url:null},
+	{id:152,name:"Eric Browning",url:"http://ericbrowning.blogspot.com/"},
+	{id:153,name:"Jay Curtis",url:null},
+	{id:154,name:"Chris Robinson",url:"http://chrisgrobinson.tumblr.com/"},
+	{id:155,name:"Justin Thavirat",url:null},
+	{id:156,name:"Matt Smith",url:null}
 ];
 
 Deckie.cards = {
@@ -189,7 +196,8 @@ Deckie.cards = {
 		{id:1,name:"Basic"},
 		{id:2,name:"Expert"},
 		{id:3,name:"Promotion"},
-		{id:4,name:"Reward"}
+		{id:4,name:"Reward"},
+		{id:5,name:"Naxxramas"}
 	],
 	list: [
 		/* druid */
@@ -583,14 +591,45 @@ Deckie.cards = {
 		{id:379,name:"Deathwing",typeid:2,qualityid:5,setid:2,cost:10,artistid:34,health:12,attack:12,raceid:3,battlecry:true,hpid:474,hsid:378,hhid:834,hhimg:"NEW1_030"},
 		{id:380,name:"Sea Giant",typeid:2,qualityid:4,setid:2,cost:10,artistid:149,health:8,attack:8,hpid:614,hsid:140,hhid:211,hhimg:"EX1_586"},
 		{id:381,name:"Mountain Giant",typeid:2,qualityid:4,setid:2,cost:12,artistid:112,health:8,attack:8,hpid:264,hsid:128,hhid:993,hhimg:"EX1_105"},
-		{id:382,name:"Molten Giant",typeid:2,qualityid:4,setid:2,cost:20,artistid:69,health:8,attack:8,hpid:94,hsid:301,hhid:1372,hhimg:"EX1_620"}
+		{id:382,name:"Molten Giant",typeid:2,qualityid:4,setid:2,cost:20,artistid:69,health:8,attack:8,hpid:94,hsid:301,hhid:1372,hhimg:"EX1_620"},
+		/* naxxramas */
+		{id:383,name:"Anub'ar Ambusher",typeid:2,qualityid:2,setid:5,cost:4,artistid:150,health:5,attack:5,classid:6,soulbound:true,deathrattle:true,hpid:7728,hsid:522,hhid:1810,hhimg:"FP1_026"},
+		{id:384,name:"Avenge",typeid:1,qualityid:2,setid:5,cost:1,artistid:70,classid:4,soulbound:true,secret:true,hpid:7729,hsid:523,hhid:1804,hhimg:"FP1_020"},
+		{id:385,name:"Baron Rivendare",typeid:2,qualityid:5,setid:5,cost:4,artistid:58,health:1,attack:7,soulbound:true,deathrattle:true,hpid:7740,hsid:524,hhid:1915,hhimg:"FP1_031"},
+		{id:386,name:"Dancing Swords",typeid:2,qualityid:2,setid:5,cost:3,artistid:151,health:4,attack:4,soulbound:true,deathrattle:true,hpid:7736,hsid:526,hhid:1913,hhimg:"FP1_029"},
+		{id:387,name:"Dark Cultist",typeid:2,qualityid:2,setid:5,cost:3,artistid:110,health:4,attack:3,classid:5,soulbound:true,deathrattle:true,hpid:7735,hsid:527,hhid:1807,hhimg:"FP1_023"},
+		{id:388,name:"Death's Bite",typeid:3,qualityid:2,setid:5,cost:4,artistid:33,attack:4,durability:2,classid:9,soulbound:true,deathrattle:true,hpid:7734,hsid:529,hhid:1805,hhimg:"FP1_021"},
+		{id:389,name:"Deathlord",typeid:2,qualityid:3,setid:5,cost:3,artistid:89,health:8,attack:2,soulbound:true,deathrattle:true,taunt:true,hpid:7753,hsid:531,hhid:1790,hhimg:"FP1_009"},
+		{id:390,name:"Duplicate",typeid:1,qualityid:2,setid:5,cost:3,artistid:52,classid:3,soulbound:true,secret:true,hpid:7732,hsid:532,hhid:1801,hhimg:"FP1_018"},
+		{id:391,name:"Echoing Ooze",typeid:2,qualityid:4,setid:5,cost:2,artistid:152,health:2,attack:1,soulbound:true,battlecry:true,hpid:7754,hsid:533,hhid:1858,hhimg:"FP1_003"},
+		{id:392,name:"Feugen",typeid:2,qualityid:5,setid:5,cost:5,artistid:5,health:7,attack:4,soulbound:true,deathrattle:true,hpid:7745,hsid:534,hhid:1797,hhimg:"FP1_015"},
+		{id:393,name:"Haunted Creeper",typeid:2,qualityid:2,setid:5,cost:2,artistid:153,health:2,attack:1,raceid:1,soulbound:true,deathrattle:true,hpid:7756,hsid:535,hhid:1781,hhimg:"FP1_002"},
+		{id:394,name:"Kel'Thuzad",typeid:2,qualityid:5,setid:5,cost:8,artistid:154,health:8,attack:6,soulbound:true,hpid:7742,hsid:536,hhid:1794,hhimg:"FP1_013"},
+		{id:395,name:"Loatheb",typeid:2,qualityid:5,setid:5,cost:5,artistid:112,health:5,attack:5,soulbound:true,battlecry:true,hpid:7746,hsid:537,hhid:1914,hhimg:"FP1_030"},
+		{id:396,name:"Mad Scientist",typeid:2,qualityid:2,setid:5,cost:2,artistid:10,health:2,attack:2,soulbound:true,deathrattle:true,secret:true,hpid:7748,hsid:538,hhid:1783,hhimg:"FP1_004"},
+		{id:397,name:"Maexxna",typeid:2,qualityid:5,setid:5,cost:6,artistid:47,health:8,attack:2,raceid:1,soulbound:true,hpid:7747,hsid:539,hhid:1791,hhimg:"FP1_010"},
+		{id:398,name:"Nerub'ar Weblord",typeid:2,qualityid:2,setid:5,cost:2,artistid:12,health:4,attack:1,soulbound:true,battlecry:true,hpid:7755,hsid:541,hhid:1800,hhimg:"FP1_017"},
+		{id:399,name:"Nerubian Egg",typeid:2,qualityid:3,setid:5,cost:2,artistid:155,health:2,attack:0,soulbound:true,deathrattle:true,hpid:7738,hsid:543,hhid:1786,hhimg:"FP1_007"},
+		{id:400,name:"Poison Seeds",typeid:1,qualityid:2,setid:5,cost:4,artistid:128,classid:1,soulbound:true,hpid:7726,hsid:544,hhid:1802,hhimg:"FP1_019"},
+		{id:401,name:"Reincarnate",typeid:1,qualityid:2,setid:5,cost:2,artistid:3,classid:7,soulbound:true,hpid:7731,hsid:546,hhid:1809,hhimg:"FP1_025"},
+		{id:402,name:"Shade of Naxxramas",typeid:2,qualityid:4,setid:5,cost:3,artistid:71,health:2,attack:2,soulbound:true,stealth:true,hpid:7730,hsid:547,hhid:1784,hhimg:"FP1_005"},
+		{id:403,name:"Sludge Belcher",typeid:2,qualityid:3,setid:5,cost:5,artistid:100,health:5,attack:3,soulbound:true,deathrattle:true,taunt:true,hpid:7749,hsid:549,hhid:1793,hhimg:"FP1_012"},
+		{id:404,name:"Spectral Knight",typeid:2,qualityid:2,setid:5,cost:5,artistid:121,health:6,attack:4,soulbound:true,hpid:7751,hsid:550,hhid:1789,hhimg:"FP1_008"},
+		{id:405,name:"Stalagg",typeid:2,qualityid:5,setid:5,cost:5,artistid:5,health:7,attack:4,soulbound:true,deathrattle:true,hpid:7744,hsid:552,hhid:1796,hhimg:"FP1_014"},
+		{id:406,name:"Stoneskin Gargoyle",typeid:2,qualityid:2,setid:5,cost:3,artistid:156,health:4,attack:1,soulbound:true,hpid:7750,hsid:553,hhid:1861,hhimg:"FP1_027"},
+		{id:407,name:"Undertaker",typeid:2,qualityid:2,setid:5,cost:1,artistid:108,health:2,attack:1,soulbound:true,deathrattle:true,hpid:7737,hsid:555,hhid:1910,hhimg:"FP1_028"},
+		{id:408,name:"Unstable Ghoul",typeid:2,qualityid:2,setid:5,cost:2,artistid:150,health:3,attack:1,soulbound:true,deathrattle:true,taunt:true,hpid:7757,hsid:556,hhid:1808,hhimg:"FP1_024"},
+		{id:409,name:"Voidcaller",typeid:2,qualityid:2,setid:5,cost:4,artistid:102,health:4,attack:3,raceid:2,classid:8,soulbound:true,deathrattle:true,hpid:7733,hsid:558,hhid:1806,hhimg:"FP1_022"},
+		{id:410,name:"Wailing Soul",typeid:2,qualityid:3,setid:5,cost:4,artistid:69,health:5,attack:3,soulbound:true,battlecry:true,silence:true,hpid:7758,hsid:559,hhid:1799,hhimg:"FP1_016"},
+		{id:411,name:"Webspinner",typeid:2,qualityid:2,setid:5,cost:1,artistid:40,health:1,attack:1,raceid:1,classid:2,soulbound:true,deathrattle:true,hpid:7741,hsid:560,hhid:1860,hhimg:"FP1_011"},
+		{id:412,name:"Zombie Chow",typeid:2,qualityid:2,setid:5,cost:1,artistid:77,health:3,attack:2,soulbound:true,deathrattle:true,hpid:683,hsid:561,hhid:1753,hhimg:"FP1_001"}
 	]
 };
 
 
 var Background = (function (){
 
-	const CURRENT_VERSION = "2.0.2.4944";
+	const CURRENT_VERSION = "2.0.3.6024";
 	
 	const KEY_DECKS = "decks";
 	const KEY_VERSION = "version";
